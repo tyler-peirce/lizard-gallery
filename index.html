@@ -726,6 +726,8 @@
         m.index  = 0;
 
         document.getElementById('modal-overlay').classList.add('open');
+        document.getElementById('modal-spinner').classList.remove('hidden');
+        document.getElementById('modal-canvas').style.display = 'none';
         updateModalPhoto();
 
         const morphBadges = (animal.morphs || []).map(b => `<span class="${badgeClass(b)}">${b}</span>`).join('');
