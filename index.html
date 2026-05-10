@@ -206,19 +206,22 @@
                 overflow: hidden;
             }
             .modal-info {
-                padding: 0.75rem;
-                gap: 0.4rem;
+                padding: 0.5rem 0.75rem;
+                gap: 0;
                 border-left: none;
                 border-top: 1px solid var(--border);
-                overflow-y: auto;
+                overflow: hidden;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-content: flex-start;
             }
-            .modal-id      { font-size: 0.95rem; }
-            .modal-price   { font-size: 1.05rem; }
-            .modal-notes,
-            .modal-dob     { font-size: 0.7rem; }
-            .modal-section-label { margin-bottom: 0.2rem; }
-            .animal-nav    { padding-top: 0.4rem; margin-top: 0; }
-            .animal-nav-btn { font-size: 0.72rem; padding: 0.35rem 0.3rem; }
+            .modal-compact  { display: block; width: 100%; }
+            .modal-full     { display: none; }
+            .animal-nav {
+                order: 0; margin-top: 0; padding-top: 0;
+                width: 100%; margin-bottom: 0.35rem;
+            }
+            .animal-nav-btn { font-size: 0.75rem; padding: 0.3rem 0.3rem; }
         }
 
         .modal-photo-wrap {
@@ -278,8 +281,10 @@
             border-left: 1px solid var(--border);
         }
 
+        /* Animal nav — sits at bottom on desktop, top on mobile via order */
         .animal-nav {
             display: flex; gap: 0.5rem; margin-top: auto; padding-top: 1rem;
+            order: 99;
         }
 
         .animal-nav-btn {
@@ -296,6 +301,7 @@
         }
         .animal-nav-btn:hover:not(:disabled) { border-color: var(--accent-dim); }
         .animal-nav-btn:disabled { opacity: 0.25; cursor: default; }
+
         .modal-id { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.3rem; }
         .modal-section-label {
             font-size: 0.7rem; color: var(--text-dim);
@@ -304,6 +310,23 @@
         .modal-price { font-size: 1.4rem; font-weight: 700; color: var(--accent); }
         .modal-notes { font-size: 0.82rem; color: var(--text-dim); line-height: 1.5; }
         .modal-dob   { font-size: 0.82rem; color: var(--text-dim); }
+
+        /* Compact one-line summary shown only on mobile */
+        .modal-compact { display: none; order: 1; }
+        .modal-compact .compact-row {
+            display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem;
+            font-size: 0.82rem;
+        }
+        .modal-compact .compact-price {
+            font-weight: 700; color: var(--accent); font-size: 0.9rem;
+        }
+        .modal-compact .compact-notes {
+            font-size: 0.68rem; color: var(--text-dim);
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            max-width: 100%; margin-top: 0.15rem;
+        }
+        /* Desktop full info */
+        .modal-full { display: contents; }
 
         .modal-close {
             position: absolute; top: 0.75rem; right: 0.75rem;
@@ -783,20 +806,31 @@
         const visible  = getFiltered().visible;
 
         document.getElementById('modal-info').innerHTML = `
-            <div>
-                <div class="modal-id">${animal.id}</div>
-                <span class="sex-badge ${sexClass}">${animal.sex || 'Sex unknown'}</span>
-            </div>
-            ${animal.dob ? `<div class="modal-dob">DOB: ${animal.dob}</div>` : ''}
-            <div>
-                <div class="modal-section-label">Genetics</div>
-                <div class="morph-list">${morphBadges}${hetBadges}</div>
-            </div>
-            <div class="modal-price">${price}</div>
-            ${animal.notes ? `<div class="modal-notes">${animal.notes}</div>` : ''}
             <div class="animal-nav">
-                <button class="animal-nav-btn" id="modal-prev-animal" ${m.animalIdx <= 0 ? 'disabled' : ''}>&#8592; Prev animal</button>
-                <button class="animal-nav-btn" id="modal-next-animal" ${m.animalIdx >= visible.length - 1 ? 'disabled' : ''}>Next animal &#8594;</button>
+                <button class="animal-nav-btn" id="modal-prev-animal" ${m.animalIdx <= 0 ? 'disabled' : ''}>&#8592; Prev</button>
+                <button class="animal-nav-btn" id="modal-next-animal" ${m.animalIdx >= visible.length - 1 ? 'disabled' : ''}>Next &#8594;</button>
+            </div>
+            <div class="modal-compact">
+                <div class="compact-row">
+                    <span class="modal-id">${animal.id}</span>
+                    <span class="sex-badge ${sexClass}">${animal.sex || '?'}</span>
+                    <span class="compact-price">${price}</span>
+                    ${morphBadges}${hetBadges}
+                </div>
+                ${animal.notes ? `<div class="compact-notes">${animal.notes}</div>` : ''}
+            </div>
+            <div class="modal-full">
+                <div>
+                    <div class="modal-id">${animal.id}</div>
+                    <span class="sex-badge ${sexClass}">${animal.sex || 'Sex unknown'}</span>
+                </div>
+                ${animal.dob ? `<div class="modal-dob">DOB: ${animal.dob}</div>` : ''}
+                <div>
+                    <div class="modal-section-label">Genetics</div>
+                    <div class="morph-list">${morphBadges}${hetBadges}</div>
+                </div>
+                <div class="modal-price">${price}</div>
+                ${animal.notes ? `<div class="modal-notes">${animal.notes}</div>` : ''}
             </div>
         `;
 
