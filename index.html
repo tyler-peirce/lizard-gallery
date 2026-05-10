@@ -205,11 +205,9 @@
         .modal-photo-wrap {
             background: #000;
             position: relative;
-            aspect-ratio: 4 / 3;
             overflow: hidden;
         }
 
-        /* Modal canvas fills the photo wrap; drawn at 900x675 for quality */
         .modal-photo-wrap canvas {
             width: 100%; height: 100%;
             display: block;
@@ -517,10 +515,18 @@
 
     // Paints one photo onto a canvas with watermark.
     // large=false → 480×360, cover crop   (card thumbnails)
-    // large=true  → 900×675, contain fit  (modal full view)
+    // large=true  → matches container × devicePixelRatio, contain fit  (modal full view)
     function paintImage(src, canvas, large, onDone) {
-        const CW = large ? 900 : 480;
-        const CH = large ? 675 : 360;
+        let CW, CH;
+        if (large) {
+            const dpr  = window.devicePixelRatio || 1;
+            const wrap = canvas.parentElement;
+            CW = Math.round((wrap?.offsetWidth  || 1200) * dpr);
+            CH = Math.round((wrap?.offsetHeight || 800)  * dpr);
+        } else {
+            CW = 480;
+            CH = 360;
+        }
         canvas.width  = CW;
         canvas.height = CH;
 
