@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bluetongue Lizards For Sale</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:         #111418;
+            --surface:    #1b1f26;
+            --surface2:   #252b34;
+            --accent:     #c9a95c;
+            --accent-dim: #7a6435;
+            --text:       #e2e4e9;
+            --text-dim:   #7e8490;
+            --border:     #2c323d;
+            --radius:     10px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* ── Header ── */
+        header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 1.25rem 1.75rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 1.35rem; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; }
+        #count { color: var(--text-dim); font-size: 0.85rem; }
+
+        .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+        .filter-group { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+
+        .filter-sep {
+            width: 1px; height: 22px;
+            background: var(--border);
+            align-self: center; flex-shrink: 0;
+        }
+
+        .filter-label {
+            font-size: 0.7rem; color: var(--text-dim);
+            text-transform: uppercase; letter-spacing: 0.07em;
+            align-self: center; padding-right: 0.2rem;
+        }
+
+        .filter-btn {
+            padding: 0.28rem 0.7rem;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-dim);
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+        .filter-btn:hover { border-color: var(--accent-dim); color: var(--text); }
+        .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #111; font-weight: 600; }
+        .filter-btn.combo { border-style: dashed; }
+        .filter-btn.combo.active { border-style: solid; }
+
+        /* ── Grid ── */
+        main { padding: 1.75rem; max-width: 1400px; margin: 0 auto; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.1rem;
+        }
+
+        /* ── Card ── */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-dim);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        }
+
+        .card-photo {
+            aspect-ratio: 4 / 3;
+            background: var(--surface2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Canvas fills the card-photo div; drawn pixels are 480x360 (same ratio) */
+        .card-photo canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .no-photo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+
+        .card-body { padding: 0.8rem 0.95rem; }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.45rem;
+        }
+
+        .animal-id { font-weight: 700; font-size: 0.9rem; }
+
+        /* ── Badges ── */
+        .sex-badge { font-size: 0.7rem; padding: 0.15rem 0.45rem; border-radius: 999px; font-weight: 600; }
+        .sex-badge.male    { background: #162d46; color: #6aaee8; }
+        .sex-badge.female  { background: #3a1629; color: #e87cc2; }
+        .sex-badge.unknown { background: var(--surface2); color: var(--text-dim); }
+
+        .morph-list { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-bottom: 0.5rem; }
+
+        .badge { font-size: 0.68rem; padding: 0.18rem 0.45rem; border-radius: 4px; font-weight: 600; }
+        .badge.morph { background: #1e3318; color: #87c95a; }
+        .badge.combo { background: #1e2f3d; color: #5ab0c9; }
+        .badge.het   { background: #2a2240; color: #9d87c9; }
+
+        .price { font-size: 1rem; font-weight: 700; color: var(--accent); }
+        .card-notes { font-size: 0.75rem; color: var(--text-dim); margin-top: 0.35rem; line-height: 1.4; }
+
+        /* ── Litter notice ── */
+        .litter-notice {
+            grid-column: 1 / -1;
+            background: var(--surface);
+            border: 1px dashed var(--border);
+            border-radius: var(--radius);
+            padding: 0.9rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .litter-notice span { font-size: 0.85rem; color: var(--text-dim); }
+        .litter-notice strong { color: var(--text); }
+        .litter-notice a {
+            color: var(--accent); font-size: 0.85rem; font-weight: 600;
+            text-decoration: none; white-space: nowrap;
+        }
+        .litter-notice a:hover { text-decoration: underline; }
+
+        /* ── Empty state ── */
+        .empty { grid-column: 1 / -1; text-align: center; padding: 4rem; color: var(--text-dim); }
+
+        /* ── Modal ── */
+        .modal-overlay {
+            display: none;
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.87);
+            z-index: 200;
+            align-items: center; justify-content: center;
+            padding: 1rem;
+        }
+        .modal-overlay.open { display: flex; }
+
+        .modal {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            max-width: 860px; width: 100%;
+            max-height: 92vh; overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            position: relative;
+        }
+
+        @media (max-width: 640px) {
+            .modal { grid-template-columns: 1fr; grid-template-rows: auto 1fr; overflow-y: auto; }
+        }
+
+        .modal-photo-wrap {
+            background: #000;
+            position: relative;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+        }
+
+        /* Modal canvas fills the photo wrap; drawn at 900x675 for quality */
+        .modal-photo-wrap canvas {
+            width: 100%; height: 100%;
+            display: block;
+        }
+
+        .modal-no-photo {
+            display: flex; align-items: center; justify-content: center;
+            height: 100%; color: var(--text-dim); font-size: 0.85rem;
+        }
+
+        .modal-nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(0,0,0,0.55); border: none; color: #fff;
+            font-size: 1.4rem; width: 38px; height: 38px;
+            border-radius: 50%; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.15s;
+        }
+        .modal-nav:hover { background: rgba(0,0,0,0.8); }
+        .modal-nav:disabled { opacity: 0.2; cursor: default; }
+        .modal-nav.prev { left: 10px; }
+        .modal-nav.next { right: 10px; }
+
+        .modal-photo-counter {
+            position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+            background: rgba(0,0,0,0.6); color: #fff;
+            font-size: 0.72rem; padding: 0.2rem 0.6rem; border-radius: 999px;
+        }
+
+        .modal-info {
+            padding: 1.4rem; overflow-y: auto;
+            display: flex; flex-direction: column; gap: 0.9rem;
+        }
+        .modal-id { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .modal-section-label {
+            font-size: 0.7rem; color: var(--text-dim);
+            text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem;
+        }
+        .modal-price { font-size: 1.4rem; font-weight: 700; color: var(--accent); }
+        .modal-notes { font-size: 0.82rem; color: var(--text-dim); line-height: 1.5; }
+        .modal-dob   { font-size: 0.82rem; color: var(--text-dim); }
+
+        .modal-close {
+            position: absolute; top: 0.75rem; right: 0.75rem;
+            background: rgba(0,0,0,0.6); border: none; color: #fff;
+            width: 30px; height: 30px; border-radius: 50%;
+            cursor: pointer; font-size: 1rem; z-index: 10;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .modal-close:hover { background: rgba(0,0,0,0.85); }
+
+        /* ── Access gate ── */
+        #gate {
+            position: fixed;
+            inset: 0;
+            background: var(--bg);
+            z-index: 400;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        #gate.hidden { display: none; }
+
+        .gate-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: calc(var(--radius) * 1.5);
+            padding: 2.25rem 2rem;
+            max-width: 420px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        }
+
+        .gate-logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 0.35rem;
+            letter-spacing: -0.02em;
+        }
+
+        .gate-subtitle {
+            font-size: 0.88rem;
+            color: var(--text-dim);
+            margin-bottom: 1.75rem;
+            line-height: 1.5;
+        }
+
+        .gate-field {
+            margin-bottom: 1rem;
+        }
+
+        .gate-field label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.4rem;
+        }
+
+        .gate-field input {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--text);
+            font-size: 0.9rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.15s;
+        }
+
+        .gate-field input:focus {
+            border-color: var(--accent-dim);
+        }
+
+        .gate-field input::placeholder { color: var(--text-dim); }
+
+        .gate-btn {
+            width: 100%;
+            margin-top: 0.5rem;
+            padding: 0.7rem;
+            background: var(--accent);
+            color: #111;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.15s;
+        }
+
+        .gate-btn:hover { opacity: 0.9; }
+        .gate-btn:disabled { opacity: 0.5; cursor: default; }
+
+        .gate-note {
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            text-align: center;
+            margin-top: 1rem;
+            line-height: 1.5;
+        }
+
+        .gate-error {
+            font-size: 0.8rem;
+            color: #e87c7c;
+            margin-top: 0.6rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Access gate — shown until visitor submits contact details -->
+<div id="gate">
+    <div class="gate-box">
+        <div class="gate-logo">Bluetongue Lizards For Sale</div>
+        <p class="gate-subtitle">
+            This is a private listing gallery. Please leave your name and contact
+            details below and I'll be in touch shortly.
+        </p>
+        <form id="gate-form" novalidate>
+            <div class="gate-field">
+                <label for="gate-name">Your name</label>
+                <input id="gate-name" name="name" type="text" placeholder="First and last name" required autocomplete="name">
+            </div>
+            <div class="gate-field">
+                <label for="gate-email">Email address</label>
+                <input id="gate-email" name="email" type="email" placeholder="you@example.com" autocomplete="email">
+            </div>
+            <div class="gate-field">
+                <label for="gate-phone">Mobile number</label>
+                <input id="gate-phone" name="phone" type="tel" placeholder="04xx xxx xxx" autocomplete="tel">
+            </div>
+            <button class="gate-btn" type="submit" id="gate-submit">View available animals</button>
+            <div class="gate-error" id="gate-error">Something went wrong — please try again.</div>
+        </form>
+        <p class="gate-note">Both email and mobile are required.<br>Your details will only be used to follow up on your enquiry.</p>
+    </div>
+</div>
+
+<header>
+    <div class="header-top">
+        <h1>Bluetongue Lizards For Sale</h1>
+        <span id="count"></span>
+    </div>
+    <div class="filters">
+        <span class="filter-label">Morph</span>
+        <div class="filter-group" id="morph-filters"></div>
+        <div class="filter-sep"></div>
+        <span class="filter-label">Sex</span>
+        <div class="filter-group" id="sex-filters"></div>
+    </div>
+</header>
+
+<main>
+    <div class="grid" id="gallery"></div>
+</main>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal">
+        <button class="modal-close" id="modal-close" title="Close">&#x2715;</button>
+        <div class="modal-photo-wrap" id="modal-photo-wrap">
+            <canvas id="modal-canvas"></canvas>
+            <div class="modal-no-photo" id="modal-no-photo" style="display:none">No photos yet</div>
+            <button class="modal-nav prev" id="modal-prev">&#8249;</button>
+            <button class="modal-nav next" id="modal-next">&#8250;</button>
+            <div class="modal-photo-counter" id="modal-counter" style="display:none"></div>
+        </div>
+        <div class="modal-info" id="modal-info"></div>
+    </div>
+</div>
+
+<script>
+    // ── Morph definitions ──────────────────────────────────────────────
+    const COMBOS = {
+        'Alabaster': ['Anery', 'White Northern'],
+        'Blackout':  ['Anery', 'Hyper'],
+        'Platinum':  ['Hyper', 'White Northern'],
+    };
+
+    const BASE_MORPHS  = ['Anery', 'White Northern', 'Hyper', 'Albino', 'T+', 'Whitesided', 'Patchwork', 'Piedsided'];
+    const COMBO_MORPHS = Object.keys(COMBOS);
+
+    // ── Config (loaded from animals.json) ─────────────────────────────
+    let CONFIG = { watermark: '' };
+
+    // ── Watermark & canvas painting ───────────────────────────────────
+
+    function drawWatermark(ctx, cw, ch, text, large) {
+        if (!text) return;
+        ctx.save();
+        if (large) {
+            // Diagonal stamp across the centre for the full-size modal view
+            const fontSize = Math.round(Math.min(cw, ch) * 0.075);
+            ctx.translate(cw / 2, ch / 2);
+            ctx.rotate(-Math.PI / 6);
+            ctx.font = `bold ${fontSize}px sans-serif`;
+            ctx.globalAlpha = 0.2;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth   = Math.max(3, fontSize * 0.07);
+            ctx.fillStyle   = '#fff';
+            ctx.strokeText(text, 0, 0);
+            ctx.fillText(text,   0, 0);
+        } else {
+            // Bottom-right corner stamp for thumbnail cards
+            const fontSize = Math.max(13, Math.round(cw * 0.055));
+            ctx.font        = `bold ${fontSize}px sans-serif`;
+            ctx.globalAlpha = 0.65;
+            ctx.textAlign     = 'right';
+            ctx.textBaseline  = 'bottom';
+            ctx.strokeStyle   = 'rgba(0,0,0,0.85)';
+            ctx.lineWidth     = Math.max(2, fontSize * 0.07);
+            ctx.fillStyle     = '#fff';
+            ctx.strokeText(text, cw - 10, ch - 8);
+            ctx.fillText(text,   cw - 10, ch - 8);
+        }
+        ctx.restore();
+    }
+
+    // Paints one photo onto a canvas with watermark.
+    // large=false → 480×360, cover crop   (card thumbnails)
+    // large=true  → 900×675, contain fit  (modal full view)
+    function paintImage(src, canvas, large, onDone) {
+        const CW = large ? 900 : 480;
+        const CH = large ? 675 : 360;
+        canvas.width  = CW;
+        canvas.height = CH;
+
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+
+        img.onload = () => {
+            if (large) {
+                // Contain: show full image, letterbox with black
+                const scale = Math.min(CW / img.naturalWidth, CH / img.naturalHeight);
+                const w = img.naturalWidth  * scale;
+                const h = img.naturalHeight * scale;
+                ctx.fillStyle = '#000';
+                ctx.fillRect(0, 0, CW, CH);
+                ctx.drawImage(img, (CW - w) / 2, (CH - h) / 2, w, h);
+            } else {
+                // Cover: crop to fill card
+                const scale = Math.max(CW / img.naturalWidth, CH / img.naturalHeight);
+                const w = img.naturalWidth  * scale;
+                const h = img.naturalHeight * scale;
+                ctx.drawImage(img, (CW - w) / 2, (CH - h) / 2, w, h);
+            }
+            drawWatermark(ctx, CW, CH, CONFIG.watermark, large);
+            if (onDone) onDone(true);
+        };
+
+        img.onerror = () => { if (onDone) onDone(false); };
+        img.src = src;
+    }
+
+    // ── App state ──────────────────────────────────────────────────────
+    const state = {
+        animals:     [],
+        litters:     {},
+        filterMorph: null,
+        filterSex:   null,
+        modal: { animal: null, photos: [], index: 0 },
+    };
+
+    // ── Filter logic ───────────────────────────────────────────────────
+    function animalMatchesMorph(animal, morph) {
+        if (!morph) return true;
+
+        const morphs = animal.morphs || [];
+        const hets   = animal.hets   || [];
+
+        if (morphs.includes(morph)) return true;
+        if (hets.includes(morph))   return true;
+
+        // Expressed combo contains this base morph (e.g. Alabaster → Anery filter)
+        for (const m of morphs) {
+            if (COMBOS[m] && COMBOS[m].includes(morph)) return true;
+        }
+
+        // Filtering by combo: animal expresses all component base morphs
+        if (COMBOS[morph]) {
+            const parts = COMBOS[morph];
+            const expressedBases = new Set();
+            for (const m of morphs) {
+                if (COMBOS[m]) COMBOS[m].forEach(b => expressedBases.add(b));
+                else expressedBases.add(m);
+            }
+            if (parts.every(p => expressedBases.has(p))) return true;
+            if (parts.every(p => hets.includes(p)))      return true;
+        }
+
+        return false;
+    }
+
+    function getFiltered() {
+        const { animals, litters, filterMorph, filterSex } = state;
+
+        const filtered = animals.filter(a =>
+            animalMatchesMorph(a, filterMorph) &&
+            (!filterSex || a.sex === filterSex)
+        );
+
+        const seen = {}, hidden = {}, visible = [];
+
+        for (const animal of filtered) {
+            const lid = animal.litter;
+            const max = lid && litters[lid]?.showCount;
+
+            if (max) {
+                seen[lid]   = seen[lid]   || 0;
+                hidden[lid] = hidden[lid] || 0;
+                if (seen[lid] < max) { seen[lid]++; visible.push(animal); }
+                else { hidden[lid]++; }
+            } else {
+                visible.push(animal);
+            }
+        }
+
+        return { visible, hidden };
+    }
+
+    // ── Rendering ──────────────────────────────────────────────────────
+    function render() {
+        renderFilters();
+
+        const { visible, hidden } = getFiltered();
+        const gallery = document.getElementById('gallery');
+        gallery.innerHTML = '';
+
+        document.getElementById('count').textContent =
+            `${visible.length} animal${visible.length !== 1 ? 's' : ''} shown`;
+
+        if (visible.length === 0) {
+            gallery.innerHTML = '<div class="empty">No animals match this filter.</div>';
+            return;
+        }
+
+        const grouped  = {};
+        const noLitter = [];
+
+        for (const a of visible) {
+            if (a.litter) (grouped[a.litter] = grouped[a.litter] || []).push(a);
+            else noLitter.push(a);
+        }
+
+        for (const a of noLitter) gallery.appendChild(makeCard(a));
+
+        for (const [lid, group] of Object.entries(grouped)) {
+            for (const a of group) gallery.appendChild(makeCard(a));
+            if (hidden[lid] > 0) gallery.appendChild(makeLitterNotice(lid, hidden[lid]));
+        }
+    }
+
+    function renderFilters() {
+        const morphEl = document.getElementById('morph-filters');
+        const sexEl   = document.getElementById('sex-filters');
+        morphEl.innerHTML = sexEl.innerHTML = '';
+
+        const mkBtn = (label, value, type, extraClass) => {
+            const btn = document.createElement('button');
+            btn.className = 'filter-btn' + (extraClass ? ' ' + extraClass : '');
+            btn.textContent = label;
+            const active = type === 'morph' ? state.filterMorph === value : state.filterSex === value;
+            if (active) btn.classList.add('active');
+            btn.onclick = () => {
+                if (type === 'morph') state.filterMorph = value;
+                else state.filterSex = value;
+                render();
+            };
+            return btn;
+        };
+
+        morphEl.appendChild(mkBtn('All', null, 'morph'));
+        for (const m of BASE_MORPHS)  morphEl.appendChild(mkBtn(m, m, 'morph'));
+        for (const m of COMBO_MORPHS) morphEl.appendChild(mkBtn(m, m, 'morph', 'combo'));
+
+        sexEl.appendChild(mkBtn('Any',     null,      'sex'));
+        sexEl.appendChild(mkBtn('Male',    'Male',    'sex'));
+        sexEl.appendChild(mkBtn('Female',  'Female',  'sex'));
+        sexEl.appendChild(mkBtn('Unknown', 'Unknown', 'sex'));
+    }
+
+    function badgeClass(morph) {
+        return COMBO_MORPHS.includes(morph) ? 'badge combo' : 'badge morph';
+    }
+
+    function makeCard(animal) {
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        // Photo section — canvas-based so watermark is applied at paint time
+        const photoDiv = document.createElement('div');
+        photoDiv.className = 'card-photo';
+
+        const canvas  = document.createElement('canvas');
+        const noPhoto = document.createElement('div');
+        noPhoto.className   = 'no-photo';
+        noPhoto.textContent = 'No photo yet';
+        noPhoto.style.display = 'none';
+
+        photoDiv.appendChild(canvas);
+        photoDiv.appendChild(noPhoto);
+
+        paintImage(`photos/${animal.id}/1.jpg`, canvas, false, ok => {
+            if (!ok) { canvas.style.display = 'none'; noPhoto.style.display = 'flex'; }
+        });
+
+        // Body section
+        const morphBadges = (animal.morphs || []).map(m => `<span class="${badgeClass(m)}">${m}</span>`).join('');
+        const hetBadges   = (animal.hets   || []).map(m => `<span class="badge het">het ${m}</span>`).join('');
+        const sexClass = (animal.sex || 'unknown').toLowerCase();
+        const price    = animal.price ? `$${animal.price.toLocaleString()} AUD` : 'POA';
+
+        const body = document.createElement('div');
+        body.className = 'card-body';
+        body.innerHTML = `
+            <div class="card-top">
+                <span class="animal-id">${animal.id}</span>
+                <span class="sex-badge ${sexClass}">${animal.sex || '?'}</span>
+            </div>
+            <div class="morph-list">${morphBadges}${hetBadges}</div>
+            <div class="price">${price}</div>
+            ${animal.notes ? `<div class="card-notes">${animal.notes}</div>` : ''}
+        `;
+
+        card.appendChild(photoDiv);
+        card.appendChild(body);
+        card.onclick = () => openModal(animal);
+        return card;
+    }
+
+    function makeLitterNotice(lid, hiddenCount) {
+        const div = document.createElement('div');
+        div.className = 'litter-notice';
+        div.innerHTML = `
+            <span>Litter <strong>${lid}</strong>: <strong>${hiddenCount} more</strong> similar animals from this clutch not shown.</span>
+            <a href="mailto:your@email.com?subject=Enquiry - Litter ${lid}">Enquire about more &rarr;</a>
+        `;
+        return div;
+    }
+
+    // ── Modal ──────────────────────────────────────────────────────────
+    function openModal(animal) {
+        const m = state.modal;
+        m.animal = animal;
+        m.photos = [];
+        m.index  = 0;
+
+        document.getElementById('modal-overlay').classList.add('open');
+        updateModalPhoto();
+
+        const morphBadges = (animal.morphs || []).map(b => `<span class="${badgeClass(b)}">${b}</span>`).join('');
+        const hetBadges   = (animal.hets   || []).map(b => `<span class="badge het">het ${b}</span>`).join('');
+        const sexClass = (animal.sex || 'unknown').toLowerCase();
+        const price    = animal.price ? `$${animal.price.toLocaleString()} AUD` : 'Price on application';
+
+        document.getElementById('modal-info').innerHTML = `
+            <div>
+                <div class="modal-id">${animal.id}</div>
+                <span class="sex-badge ${sexClass}">${animal.sex || 'Sex unknown'}</span>
+            </div>
+            ${animal.dob ? `<div class="modal-dob">DOB: ${animal.dob}</div>` : ''}
+            <div>
+                <div class="modal-section-label">Genetics</div>
+                <div class="morph-list">${morphBadges}${hetBadges}</div>
+            </div>
+            <div class="modal-price">${price}</div>
+            ${animal.notes ? `<div class="modal-notes">${animal.notes}</div>` : ''}
+        `;
+
+        discoverPhotos(animal.id, photos => {
+            m.photos = photos;
+            updateModalPhoto();
+        });
+    }
+
+    function discoverPhotos(animalId, callback) {
+        const photos = [];
+        let i = 1;
+        function tryNext() {
+            const img = new Image();
+            img.onload  = () => { photos.push(img.src); i++; tryNext(); };
+            img.onerror = () => callback(photos);
+            img.src = `photos/${animalId}/${i}.jpg`;
+        }
+        tryNext();
+    }
+
+    function updateModalPhoto() {
+        const { photos, index } = state.modal;
+        const canvasEl  = document.getElementById('modal-canvas');
+        const noPhotoEl = document.getElementById('modal-no-photo');
+        const counterEl = document.getElementById('modal-counter');
+        const prevBtn   = document.getElementById('modal-prev');
+        const nextBtn   = document.getElementById('modal-next');
+
+        if (photos.length === 0) {
+            canvasEl.style.display  = 'none';
+            noPhotoEl.style.display = 'flex';
+            counterEl.style.display = 'none';
+        } else {
+            canvasEl.style.display  = 'block';
+            noPhotoEl.style.display = 'none';
+            paintImage(photos[index], canvasEl, true);
+
+            counterEl.style.display = photos.length > 1 ? 'block' : 'none';
+            if (photos.length > 1) counterEl.textContent = `${index + 1} / ${photos.length}`;
+        }
+
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index >= photos.length - 1;
+    }
+
+    document.getElementById('modal-prev').onclick = () => {
+        state.modal.index = Math.max(0, state.modal.index - 1);
+        updateModalPhoto();
+    };
+    document.getElementById('modal-next').onclick = () => {
+        state.modal.index = Math.min(state.modal.photos.length - 1, state.modal.index + 1);
+        updateModalPhoto();
+    };
+
+    function closeModal() {
+        document.getElementById('modal-overlay').classList.remove('open');
+        state.modal.animal = null;
+    }
+
+    document.getElementById('modal-close').onclick = closeModal;
+    document.getElementById('modal-overlay').onclick = e => {
+        if (e.target === document.getElementById('modal-overlay')) closeModal();
+    };
+
+    document.addEventListener('keydown', e => {
+        if (!state.modal.animal) return;
+        if (e.key === 'Escape')      closeModal();
+        if (e.key === 'ArrowLeft')  { state.modal.index = Math.max(0, state.modal.index - 1); updateModalPhoto(); }
+        if (e.key === 'ArrowRight') { state.modal.index = Math.min(state.modal.photos.length - 1, state.modal.index + 1); updateModalPhoto(); }
+    });
+
+    // ── Access gate ───────────────────────────────────────────────────
+    const STORAGE_KEY = 'btl_access_granted';
+
+    function gateAlreadyPassed() {
+        try { return !!localStorage.getItem(STORAGE_KEY); } catch { return false; }
+    }
+
+    function markGatePassed() {
+        try { localStorage.setItem(STORAGE_KEY, '1'); } catch {}
+    }
+
+    function unlockGallery() {
+        document.getElementById('gate').classList.add('hidden');
+    }
+
+    function initGate() {
+        if (gateAlreadyPassed()) { unlockGallery(); return; }
+
+        const form    = document.getElementById('gate-form');
+        const submit  = document.getElementById('gate-submit');
+        const errEl   = document.getElementById('gate-error');
+
+        form.addEventListener('submit', async e => {
+            e.preventDefault();
+            errEl.style.display = 'none';
+
+            const name  = document.getElementById('gate-name').value.trim();
+            const email = document.getElementById('gate-email').value.trim();
+            const phone = document.getElementById('gate-phone').value.trim();
+
+            if (!name)  { showGateError('Please enter your name.'); return; }
+            if (!email) { showGateError('Please enter your email address.'); return; }
+            if (!phone) { showGateError('Please enter your mobile number.'); return; }
+
+            submit.disabled    = true;
+            submit.textContent = 'Sending…';
+
+            const endpoint = CONFIG.formspreeId
+                ? `https://formspree.io/f/${CONFIG.formspreeId}`
+                : null;
+
+            if (endpoint) {
+                try {
+                    const res = await fetch(endpoint, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify({ name, email, phone }),
+                    });
+                    if (!res.ok) throw new Error('bad response');
+                } catch {
+                    // Still grant access — don't block genuine buyers over a network hiccup.
+                    // The error is logged so you can investigate if needed.
+                    console.warn('Formspree submission failed — granting access anyway.');
+                }
+            }
+
+            markGatePassed();
+            unlockGallery();
+        });
+    }
+
+    function showGateError(msg) {
+        const el = document.getElementById('gate-error');
+        el.textContent    = msg;
+        el.style.display  = 'block';
+        document.getElementById('gate-submit').disabled    = false;
+        document.getElementById('gate-submit').textContent = 'View available animals';
+    }
+
+    // ── Boot ───────────────────────────────────────────────────────────
+    fetch('animals.json')
+        .then(r => r.json())
+        .then(data => {
+            CONFIG        = Object.assign({ watermark: '', formspreeId: '' }, data.config || {});
+            state.animals = data.animals || [];
+            state.litters = data.litters || {};
+            initGate();
+            render();
+        })
+        .catch(() => {
+            document.getElementById('gallery').innerHTML =
+                '<div class="empty">Could not load animal data. Make sure animals.json exists.</div>';
+        });
+</script>
+</body>
+</html>
