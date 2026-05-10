@@ -190,10 +190,9 @@
 
         .modal {
             background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            max-width: min(1200px, 95vw); width: 100%;
-            max-height: 92vh; overflow: hidden;
+            border-left: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            width: 100vw; height: 100vh;
             display: grid;
             grid-template-columns: 1fr 300px;
             position: relative;
@@ -259,7 +258,27 @@
         .modal-info {
             padding: 1.4rem; overflow-y: auto;
             display: flex; flex-direction: column; gap: 0.9rem;
+            border-left: 1px solid var(--border);
         }
+
+        .animal-nav {
+            display: flex; gap: 0.5rem; margin-top: auto; padding-top: 1rem;
+        }
+
+        .animal-nav-btn {
+            flex: 1;
+            padding: 0.5rem 0.4rem;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--text);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: border-color 0.15s;
+            text-align: center;
+        }
+        .animal-nav-btn:hover:not(:disabled) { border-color: var(--accent-dim); }
+        .animal-nav-btn:disabled { opacity: 0.25; cursor: default; }
         .modal-id { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.3rem; }
         .modal-section-label {
             font-size: 0.7rem; color: var(--text-dim);
@@ -538,7 +557,7 @@
         litters:     {},
         filterMorph: null,
         filterSex:   null,
-        modal: { animal: null, photos: [], index: 0 },
+        modal: { animal: null, photos: [], index: 0, animalIdx: -1, discovering: false },
     };
 
     // ── Filter logic ───────────────────────────────────────────────────
@@ -721,19 +740,22 @@
     // ── Modal ──────────────────────────────────────────────────────────
     function openModal(animal) {
         const m = state.modal;
-        m.animal = animal;
-        m.photos = [];
-        m.index  = 0;
+        m.animal     = animal;
+        m.photos     = [];
+        m.index      = 0;
+        m.discovering = true;
+        m.animalIdx  = getFiltered().visible.findIndex(a => a.id === animal.id);
 
         document.getElementById('modal-overlay').classList.add('open');
         document.getElementById('modal-spinner').classList.remove('hidden');
         document.getElementById('modal-canvas').style.display = 'none';
-        updateModalPhoto();
+        document.getElementById('modal-no-photo').style.display = 'none';
 
         const morphBadges = (animal.morphs || []).map(b => `<span class="${badgeClass(b)}">${b}</span>`).join('');
         const hetBadges   = (animal.hets   || []).map(b => `<span class="badge het">het ${b}</span>`).join('');
         const sexClass = (animal.sex || 'unknown').toLowerCase();
         const price    = animal.price ? `$${animal.price.toLocaleString()} AUD` : 'Price on application';
+        const visible  = getFiltered().visible;
 
         document.getElementById('modal-info').innerHTML = `
             <div>
@@ -747,10 +769,24 @@
             </div>
             <div class="modal-price">${price}</div>
             ${animal.notes ? `<div class="modal-notes">${animal.notes}</div>` : ''}
+            <div class="animal-nav">
+                <button class="animal-nav-btn" id="modal-prev-animal" ${m.animalIdx <= 0 ? 'disabled' : ''}>&#8592; Prev animal</button>
+                <button class="animal-nav-btn" id="modal-next-animal" ${m.animalIdx >= visible.length - 1 ? 'disabled' : ''}>Next animal &#8594;</button>
+            </div>
         `;
 
+        document.getElementById('modal-prev-animal')?.addEventListener('click', () => {
+            const v = getFiltered().visible;
+            if (state.modal.animalIdx > 0) openModal(v[state.modal.animalIdx - 1]);
+        });
+        document.getElementById('modal-next-animal')?.addEventListener('click', () => {
+            const v = getFiltered().visible;
+            if (state.modal.animalIdx < v.length - 1) openModal(v[state.modal.animalIdx + 1]);
+        });
+
         discoverPhotos(animal.id, photos => {
-            m.photos = photos;
+            m.photos      = photos;
+            m.discovering = false;
             updateModalPhoto();
         });
     }
@@ -776,7 +812,12 @@
         const prevBtn   = document.getElementById('modal-prev');
         const nextBtn   = document.getElementById('modal-next');
 
-        if (photos.length === 0) {
+        if (state.modal.discovering) {
+            // Still probing for photos — keep spinner, hide everything else
+            canvasEl.style.display  = 'none';
+            noPhotoEl.style.display = 'none';
+            counterEl.style.display = 'none';
+        } else if (photos.length === 0) {
             canvasEl.style.display  = 'none';
             noPhotoEl.style.display = 'flex';
             spinnerEl.classList.add('hidden');
@@ -823,9 +864,17 @@
 
     document.addEventListener('keydown', e => {
         if (!state.modal.animal) return;
-        if (e.key === 'Escape')      closeModal();
-        if (e.key === 'ArrowLeft')  { state.modal.index = Math.max(0, state.modal.index - 1); updateModalPhoto(); }
-        if (e.key === 'ArrowRight') { state.modal.index = Math.min(state.modal.photos.length - 1, state.modal.index + 1); updateModalPhoto(); }
+        const m = state.modal;
+        const visible = getFiltered().visible;
+        if (e.key === 'Escape') { closeModal(); return; }
+        if (e.key === 'ArrowLeft') {
+            if (m.index > 0) { m.index--; updateModalPhoto(); }
+            else if (m.animalIdx > 0) openModal(visible[m.animalIdx - 1]);
+        }
+        if (e.key === 'ArrowRight') {
+            if (m.index < m.photos.length - 1) { m.index++; updateModalPhoto(); }
+            else if (m.animalIdx < visible.length - 1) openModal(visible[m.animalIdx + 1]);
+        }
     });
 
     // ── Access gate ───────────────────────────────────────────────────
