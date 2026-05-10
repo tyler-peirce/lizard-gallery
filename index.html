@@ -192,10 +192,10 @@
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            max-width: 860px; width: 100%;
+            max-width: min(1200px, 95vw); width: 100%;
             max-height: 92vh; overflow: hidden;
             display: grid;
-            grid-template-columns: 1fr 280px;
+            grid-template-columns: 1fr 300px;
             position: relative;
         }
 
@@ -220,6 +220,22 @@
             display: flex; align-items: center; justify-content: center;
             height: 100%; color: var(--text-dim); font-size: 0.85rem;
         }
+
+        .modal-spinner {
+            position: absolute; inset: 0;
+            display: flex; align-items: center; justify-content: center;
+            pointer-events: none;
+        }
+        .modal-spinner::after {
+            content: '';
+            width: 36px; height: 36px;
+            border: 3px solid rgba(255,255,255,0.15);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .modal-spinner.hidden { display: none; }
 
         .modal-nav {
             position: absolute; top: 50%; transform: translateY(-50%);
@@ -421,6 +437,7 @@
         <button class="modal-close" id="modal-close" title="Close">&#x2715;</button>
         <div class="modal-photo-wrap" id="modal-photo-wrap">
             <canvas id="modal-canvas"></canvas>
+            <div class="modal-spinner" id="modal-spinner"></div>
             <div class="modal-no-photo" id="modal-no-photo" style="display:none">No photos yet</div>
             <button class="modal-nav prev" id="modal-prev">&#8249;</button>
             <button class="modal-nav next" id="modal-next">&#8250;</button>
@@ -752,6 +769,7 @@
         const { photos, index } = state.modal;
         const canvasEl  = document.getElementById('modal-canvas');
         const noPhotoEl = document.getElementById('modal-no-photo');
+        const spinnerEl = document.getElementById('modal-spinner');
         const counterEl = document.getElementById('modal-counter');
         const prevBtn   = document.getElementById('modal-prev');
         const nextBtn   = document.getElementById('modal-next');
@@ -759,11 +777,20 @@
         if (photos.length === 0) {
             canvasEl.style.display  = 'none';
             noPhotoEl.style.display = 'flex';
+            spinnerEl.classList.add('hidden');
             counterEl.style.display = 'none';
         } else {
             canvasEl.style.display  = 'block';
             noPhotoEl.style.display = 'none';
-            paintImage(photos[index], canvasEl, true);
+            spinnerEl.classList.remove('hidden');
+            paintImage(photos[index], canvasEl, true, () => {
+                spinnerEl.classList.add('hidden');
+            });
+
+            // Preload adjacent photos
+            [index - 1, index + 1].forEach(i => {
+                if (photos[i]) { new Image().src = photos[i]; }
+            });
 
             counterEl.style.display = photos.length > 1 ? 'block' : 'none';
             if (photos.length > 1) counterEl.textContent = `${index + 1} / ${photos.length}`;
