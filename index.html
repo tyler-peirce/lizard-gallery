@@ -194,34 +194,8 @@
             border-right: 1px solid var(--border);
             width: 100vw; height: 100vh;
             display: grid;
-            grid-template-columns: 1fr 300px;
+            grid-template-columns: 1fr clamp(180px, 22vw, 300px);
             position: relative;
-        }
-
-        @media (max-width: 640px) {
-            .modal {
-                grid-template-columns: 1fr;
-                grid-template-rows: 85svh 1fr;
-                height: 100svh;
-                overflow: hidden;
-            }
-            .modal-info {
-                padding: 0.5rem 0.75rem;
-                gap: 0;
-                border-left: none;
-                border-top: 1px solid var(--border);
-                overflow: hidden;
-                flex-direction: row;
-                flex-wrap: wrap;
-                align-content: flex-start;
-            }
-            .modal-compact  { display: block; width: 100%; }
-            .modal-full     { display: none; }
-            .animal-nav {
-                order: 0; margin-top: 0; padding-top: 0;
-                width: 100%; margin-bottom: 0.35rem;
-            }
-            .animal-nav-btn { font-size: 0.75rem; padding: 0.3rem 0.3rem; }
         }
 
         .modal-photo-wrap {
@@ -247,7 +221,7 @@
         }
         .modal-spinner::after {
             content: '';
-            width: 36px; height: 36px;
+            width: 2.25rem; height: 2.25rem;
             border: 3px solid rgba(255,255,255,0.15);
             border-top-color: var(--accent);
             border-radius: 50%;
@@ -259,18 +233,18 @@
         .modal-nav {
             position: absolute; top: 50%; transform: translateY(-50%);
             background: rgba(0,0,0,0.55); border: none; color: #fff;
-            font-size: 1.4rem; width: 38px; height: 38px;
+            font-size: 1.4rem; width: 2.4rem; height: 2.4rem;
             border-radius: 50%; cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             transition: background 0.15s;
         }
         .modal-nav:hover { background: rgba(0,0,0,0.8); }
         .modal-nav:disabled { opacity: 0.2; cursor: default; }
-        .modal-nav.prev { left: 10px; }
-        .modal-nav.next { right: 10px; }
+        .modal-nav.prev { left: 0.75rem; }
+        .modal-nav.next { right: 0.75rem; }
 
         .modal-photo-counter {
-            position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+            position: absolute; bottom: 0.75rem; left: 50%; transform: translateX(-50%);
             background: rgba(0,0,0,0.6); color: #fff;
             font-size: 0.72rem; padding: 0.2rem 0.6rem; border-radius: 999px;
         }
@@ -331,11 +305,36 @@
         .modal-close {
             position: absolute; top: 0.75rem; right: 0.75rem;
             background: rgba(0,0,0,0.6); border: none; color: #fff;
-            width: 30px; height: 30px; border-radius: 50%;
+            width: 1.9rem; height: 1.9rem; border-radius: 50%;
             cursor: pointer; font-size: 1rem; z-index: 10;
             display: flex; align-items: center; justify-content: center;
         }
         .modal-close:hover { background: rgba(0,0,0,0.85); }
+
+        @media (max-width: 640px) {
+            .modal {
+                grid-template-columns: 1fr;
+                grid-template-rows: 85svh 1fr;
+                height: 100svh;
+                overflow: hidden;
+            }
+            .modal-info {
+                padding: 0.5rem 0.75rem;
+                gap: 0;
+                border-left: none;
+                border-top: 1px solid var(--border);
+                overflow: hidden;
+                flex-direction: column;
+                align-content: flex-start;
+            }
+            .modal-compact  { display: block; width: 100%; }
+            .modal-full     { display: none; }
+            .animal-nav {
+                order: 0; margin-top: 0; padding-top: 0;
+                width: 100%; margin-bottom: 0.35rem;
+            }
+            .animal-nav-btn { font-size: 0.75rem; padding: 0.3rem 0.3rem; }
+        }
 
         /* ── Access gate ── */
         #gate {
