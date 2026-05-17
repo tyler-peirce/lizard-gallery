@@ -412,6 +412,22 @@
       "dob": "2024-12-09"
     },
     {
+      "id": "BZ03Z1",
+      "morphs": [
+        "Piedsided"
+      ],
+      "hets": [
+        "Anery",
+        "T+",
+        "White Northern",
+        "Hyper"
+      ],
+      "sex": "Unknown",
+      "price": 1000,
+      "dob": "2025-12-19",
+      "notes": "Piedsided"
+    },
+    {
       "id": "BZ03Z2",
       "morphs": [],
       "hets": [
@@ -481,6 +497,7 @@
         "Piedsided"
       ],
       "sex": "Unknown",
+      "price": 400,
       "dob": "2025-12-19",
       "notes": "T+"
     },
@@ -596,7 +613,9 @@
         "Hyper",
         "Piedsided"
       ],
-      "sex": "Unknown"
+      "sex": "Unknown",
+      "price": 200,
+      "dob": "2025-12-27"
     },
     {
       "id": "BZ10BZ044",
@@ -684,7 +703,9 @@
         "Hyper",
         "Piedsided"
       ],
-      "sex": "Unknown"
+      "sex": "Unknown",
+      "price": 200,
+      "dob": "2025-12-27"
     },
     {
       "id": "BZ11BZ044",
@@ -712,7 +733,9 @@
         "Hyper",
         "Piedsided"
       ],
-      "sex": "Unknown"
+      "sex": "Unknown",
+      "price": 200,
+      "dob": "2025-12-27"
     },
     {
       "id": "BZ11BZ04P1",
@@ -726,6 +749,8 @@
         "Hyper"
       ],
       "sex": "Unknown",
+      "price": 1000,
+      "dob": "2025-12-27",
       "notes": "Piedsided"
     },
     {
@@ -740,6 +765,8 @@
         "Hyper"
       ],
       "sex": "Unknown",
+      "price": 1000,
+      "dob": "2025-12-27",
       "notes": "Piedsided"
     },
     {
@@ -803,20 +830,6 @@
     },
     {
       "id": "CZ02",
-      "morphs": [],
-      "hets": [
-        "Anery",
-        "T+",
-        "White Northern",
-        "Hyper",
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 300,
-      "dob": "2024-12-23"
-    },
-    {
-      "id": "CZ04",
       "morphs": [],
       "hets": [
         "Anery",
