@@ -637,13 +637,48 @@
         return false;
     }
 
+    // Returns true only if the animal *visually expresses* the morph (not just het).
+    function animalExpressesMorph(animal, morph) {
+        if (!morph) return true;
+
+        const morphs = animal.morphs || [];
+
+        if (morphs.includes(morph)) return true;
+
+        // Expressed combo contains this base morph (e.g. animal has Alabaster → matches Anery filter)
+        for (const m of morphs) {
+            if (COMBOS[m] && COMBOS[m].includes(morph)) return true;
+        }
+
+        // Filtering by combo: animal expresses all component base morphs
+        if (COMBOS[morph]) {
+            const parts = COMBOS[morph];
+            const expressedBases = new Set();
+            for (const m of morphs) {
+                if (COMBOS[m]) COMBOS[m].forEach(b => expressedBases.add(b));
+                else expressedBases.add(m);
+            }
+            if (parts.every(p => expressedBases.has(p))) return true;
+        }
+
+        return false;
+    }
+
     function getFiltered() {
         const { animals, litters, filterMorph, filterSex } = state;
 
-        const filtered = animals.filter(a =>
+        const matched = animals.filter(a =>
             animalMatchesMorph(a, filterMorph) &&
             (!filterSex || a.sex === filterSex)
         );
+
+        // When a morph filter is active, visuals come before hets
+        let filtered = matched;
+        if (filterMorph) {
+            const visuals = matched.filter(a =>  animalExpressesMorph(a, filterMorph));
+            const hets    = matched.filter(a => !animalExpressesMorph(a, filterMorph));
+            filtered = [...visuals, ...hets];
+        }
 
         const seen = {}, hidden = {}, visible = [];
 
