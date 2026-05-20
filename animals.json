@@ -742,6 +742,48 @@
       "price": 200,
       "dob": "2026-01-25",
       "notes": "50% het T+"
+    },
+    {
+      "id": "A",
+      "morphs": [
+        "White Northern"
+      ],
+      "hets": [
+        "Anery",
+        "Hyper"
+      ],
+      "sex": "Female",
+      "price": 1000,
+      "dob": "2022",
+      "notes": "White Northern, 66% het Albino"
+    },
+    {
+      "id": "B",
+      "morphs": [
+        "Anery"
+      ],
+      "hets": [
+        "White Northern",
+        "Hyper"
+      ],
+      "sex": "Female",
+      "price": 600,
+      "dob": "2022",
+      "notes": "Anery, 66% het Albino"
+    },
+    {
+      "id": "Y",
+      "morphs": [
+        "White Northern"
+      ],
+      "hets": [
+        "Anery",
+        "Hyper"
+      ],
+      "sex": "Male",
+      "price": 1000,
+      "dob": "2022",
+      "notes": "White Northern, 66% het Albino"
     }
   ]
 }
