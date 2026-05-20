@@ -1,2 +1,8 @@
 photos_1/
+photos_2/
+older_photos/
 *.xlsx
+photos/
+.DS_Store
+.claude/
+/*.jpg
