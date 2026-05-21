@@ -5,785 +5,404 @@
   },
   "animals": [
     {
-      "id": "AlbZ1",
-      "morphs": [],
-      "hets": [
-        "Albino",
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-02-07"
-    },
-    {
-      "id": "AlbZ11",
-      "morphs": [],
-      "hets": [
-        "Albino",
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-02-07"
-    },
-    {
-      "id": "AlbZ12",
-      "morphs": [],
-      "hets": [
-        "Albino",
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-02-07"
-    },
-    {
-      "id": "AlbZ13",
-      "morphs": [],
-      "hets": [
-        "Albino",
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-02-07"
-    },
-    {
-      "id": "AlbZ14",
-      "morphs": [],
-      "hets": [
-        "Albino",
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-02-07"
-    },
-    {
-      "id": "AlbZ15",
-      "morphs": [],
-      "hets": [
-        "Albino",
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-02-07"
-    },
-    {
-      "id": "AlbZ2",
-      "morphs": [],
-      "hets": [
-        "Albino",
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-02-07"
-    },
-    {
-      "id": "AlbZ3",
-      "morphs": [],
-      "hets": [
-        "Albino",
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-02-07"
-    },
-    {
-      "id": "AlbZ4",
-      "morphs": [],
-      "hets": [
-        "Albino",
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-02-07"
-    },
-    {
-      "id": "AlbZ6",
-      "morphs": [],
-      "hets": [
-        "Albino",
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-02-07"
-    },
-    {
-      "id": "AlbZ7",
-      "morphs": [],
-      "hets": [
-        "Albino",
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-02-07"
-    },
-    {
-      "id": "AlbZ8",
-      "morphs": [],
-      "hets": [
-        "Albino",
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-02-07"
-    },
-    {
-      "id": "AlbZ9",
-      "morphs": [],
-      "hets": [
-        "Albino",
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-02-07"
-    },
-    {
-      "id": "AY2",
+      "id": "BZ05ZW1",
       "morphs": [
-        "White Northern"
+        "Whitesided"
       ],
-      "hets": [],
-      "sex": "Unknown",
-      "price": 400,
-      "dob": "2026-01-22",
-      "notes": "White Northern, 66% het Anery, 66% het Hyper"
+      "price": 2000,
+      "dob": "2025",
+      "notes": "Whitesided, 50% het Anery, 66% het T+, pos het White Northern, pos het Hyper"
     },
     {
-      "id": "AY3",
-      "morphs": [
-        "White Northern"
-      ],
-      "hets": [],
-      "sex": "Unknown",
-      "price": 400,
-      "dob": "2026-01-22",
-      "notes": "White Northern, 66% het Anery, 66% het Hyper"
-    },
-    {
-      "id": "AY4",
-      "morphs": [
-        "White Northern"
-      ],
-      "hets": [],
-      "sex": "Unknown",
-      "price": 400,
-      "dob": "2026-01-22",
-      "notes": "White Northern, 66% het Anery, 66% het Hyper"
-    },
-    {
-      "id": "BY1",
-      "morphs": [
-        "Alabaster"
-      ],
-      "hets": [],
-      "sex": "Unknown",
-      "price": 600,
-      "dob": "2026-01-30",
-      "notes": "Alabaster, 66% het Hyper"
-    },
-    {
-      "id": "BY2",
-      "morphs": [
-        "Alabaster"
-      ],
-      "hets": [],
-      "sex": "Unknown",
-      "price": 600,
-      "dob": "2026-01-30",
-      "notes": "Alabaster, 66% het Hyper"
-    },
-    {
-      "id": "BY3",
-      "morphs": [
-        "Anery"
-      ],
-      "hets": [
-        "White Northern"
-      ],
-      "sex": "Unknown",
-      "price": 400,
-      "dob": "2026-01-30",
-      "notes": "Anery, 66% het Hyper"
-    },
-    {
-      "id": "BY5",
-      "morphs": [
-        "White Northern"
-      ],
-      "hets": [],
-      "sex": "Unknown",
-      "price": 400,
-      "dob": "2026-01-30",
-      "notes": "White Northern, 66% het Anery, 66% het Hyper"
-    },
-    {
-      "id": "BY6",
-      "morphs": [
-        "White Northern"
-      ],
-      "hets": [],
-      "sex": "Unknown",
-      "price": 400,
-      "dob": "2026-01-30",
-      "notes": "White Northern, 66% het Anery, 66% het Hyper"
-    },
-    {
-      "id": "BY7",
-      "morphs": [
-        "Anery"
-      ],
-      "hets": [
-        "White Northern"
-      ],
-      "sex": "Unknown",
-      "price": 400,
-      "dob": "2026-01-30",
-      "notes": "Anery, 66% het Hyper"
-    },
-    {
-      "id": "BZ03Z1",
+      "id": "BZ10BZ041",
       "morphs": [
         "Piedsided"
       ],
-      "hets": [],
-      "sex": "Unknown",
       "price": 1000,
-      "dob": "2025-12-19",
-      "notes": "Piedsided, 50% het Anery, 50% het T+, pos het White Northern, pos het Hyper"
+      "dob": "2025",
+      "notes": "Piedsided, 66% het Anery, pos het T+, pos het White Northern, pos het Hyper"
     },
     {
-      "id": "BZ03Z2",
-      "morphs": [],
+      "id": "EZ04",
       "hets": [
         "Piedsided"
       ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2025-12-19",
-      "notes": "50% het Anery, 50% het T+, pos het White Northern, pos het Hyper"
+      "price": 300,
+      "dob": "2025",
+      "notes": "50% het T+"
     },
     {
-      "id": "BZ03Z3",
-      "morphs": [],
+      "id": "EZ05",
       "hets": [
         "Piedsided"
       ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2025-12-19",
-      "notes": "50% het Anery, 50% het T+, pos het White Northern, pos het Hyper"
+      "price": 300,
+      "dob": "2025",
+      "notes": "50% het T+"
     },
     {
-      "id": "BZ03Z4",
-      "morphs": [],
+      "id": "EZ09",
       "hets": [
         "Piedsided"
       ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2025-12-19",
-      "notes": "50% het Anery, 50% het T+, pos het White Northern, pos het Hyper"
+      "price": 300,
+      "dob": "2025",
+      "notes": "50% het T+"
     },
     {
-      "id": "BZ05Z1",
+      "id": "EZ10",
+      "hets": [
+        "Piedsided"
+      ],
+      "price": 300,
+      "dob": "2025",
+      "notes": "50% het T+"
+    },
+    {
+      "id": "EZ12",
+      "hets": [
+        "Piedsided"
+      ],
+      "price": 300,
+      "dob": "2025",
+      "notes": "50% het T+"
+    },
+    {
+      "id": "EZ13",
+      "hets": [
+        "Piedsided"
+      ],
+      "price": 300,
+      "dob": "2025",
+      "notes": "50% het T+"
+    },
+    {
+      "id": "EZ14",
+      "hets": [
+        "Piedsided"
+      ],
+      "price": 300,
+      "dob": "2025",
+      "notes": "50% het T+"
+    },
+    {
+      "id": "EZ01",
+      "hets": [
+        "Piedsided"
+      ],
+      "price": 300,
+      "dob": "2025",
+      "notes": "50% het T+"
+    },
+    {
+      "id": "EZ03",
+      "hets": [
+        "Piedsided"
+      ],
+      "price": 300,
+      "dob": "2025",
+      "notes": "50% het T+"
+    },
+    {
+      "id": "EZ06",
+      "hets": [
+        "Piedsided"
+      ],
+      "price": 300,
+      "dob": "2025",
+      "notes": "50% het T+"
+    },
+    {
+      "id": "EZ08",
+      "hets": [
+        "Piedsided"
+      ],
+      "price": 300,
+      "dob": "2025",
+      "notes": "50% het T+"
+    },
+    {
+      "id": "CZ07",
       "morphs": [
         "T+"
       ],
       "hets": [
         "Piedsided"
       ],
-      "sex": "Unknown",
-      "price": 400,
-      "dob": "2025-12-19",
-      "notes": "T+, 50% het Anery, pos het White Northern, pos het Hyper"
-    },
-    {
-      "id": "BZ05Z4",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2025-12-19",
-      "notes": "50% het Anery, 66% het T+, pos het White Northern, pos het Hyper"
-    },
-    {
-      "id": "BZ05Z5",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2025-12-19",
-      "notes": "50% het Anery, 66% het T+, pos het White Northern, pos het Hyper"
-    },
-    {
-      "id": "BZ05Z6",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2025-12-19",
-      "notes": "50% het Anery, 66% het T+, pos het White Northern, pos het Hyper"
-    },
-    {
-      "id": "BZ05Z7",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2025-12-19",
-      "notes": "50% het Anery, 66% het T+, pos het White Northern, pos het Hyper"
-    },
-    {
-      "id": "BZ10BZ042",
-      "morphs": [
-        "Piedsided"
-      ],
-      "hets": [],
-      "sex": "Unknown",
+      "sex": "M",
       "price": 1000,
-      "dob": "2025-12-19",
-      "notes": "Piedsided, 66% het Anery, pos het T+, pos het White Northern, pos het Hyper"
-    },
-    {
-      "id": "BZ10BZ043",
-      "morphs": [],
-      "hets": [],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2025-12-27",
-      "notes": "66% het Anery, pos het T+, pos het White Northern, pos het Hyper, 66% het Piedsided"
-    },
-    {
-      "id": "BZ10BZ044",
-      "morphs": [
-        "Anery"
-      ],
-      "hets": [],
-      "sex": "Unknown",
-      "price": 400,
-      "dob": "2025-12-27",
-      "notes": "Anery, pos het T+, pos het White Northern, pos het Hyper, 66% het Piedsided"
-    },
-    {
-      "id": "BZ10BZ045",
-      "morphs": [
-        "Anery"
-      ],
-      "hets": [],
-      "sex": "Unknown",
-      "price": 400,
-      "dob": "2025-12-27",
-      "notes": "Anery, pos het T+, pos het White Northern, pos het Hyper, 66% het Piedsided"
-    },
-    {
-      "id": "BZ11BZ041",
-      "morphs": [
-        "Anery"
-      ],
-      "hets": [],
-      "sex": "Unknown",
-      "price": 400,
-      "dob": "2025-12-27",
-      "notes": "Anery, pos het T+, pos het White Northern, pos het Hyper, 66% het Piedsided"
-    },
-    {
-      "id": "BZ11BZ042",
-      "morphs": [],
-      "hets": [],
-      "sex": "Unknown",
-      "price": 400,
-      "dob": "2025-12-27",
-      "notes": "66% het Anery, pos het T+, pos het White Northern, pos het Hyper, 66% het Piedsided"
-    },
-    {
-      "id": "BZ11BZ043",
-      "morphs": [],
-      "hets": [],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2025-12-27",
-      "notes": "66% het Anery, pos het T+, pos het White Northern, pos het Hyper, 66% het Piedsided"
-    },
-    {
-      "id": "BZ11BZ044",
-      "morphs": [
-        "Anery"
-      ],
-      "hets": [],
-      "sex": "Unknown",
-      "price": 400,
-      "dob": "2025-12-27",
-      "notes": "Anery, pos het T+, pos het White Northern, pos het Hyper, 66% het Piedsided"
-    },
-    {
-      "id": "BZ11BZ045",
-      "morphs": [],
-      "hets": [],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2025-12-27",
-      "notes": "66% het Anery, pos het T+, pos het White Northern, pos het Hyper, 66% het Piedsided"
-    },
-    {
-      "id": "BZ11BZ04P1",
-      "morphs": [
-        "Piedsided"
-      ],
-      "hets": [],
-      "sex": "Unknown",
-      "price": 1000,
-      "dob": "2025-12-27",
-      "notes": "Piedsided, 66% het Anery, pos het T+, pos het White Northern, pos het Hyper"
-    },
-    {
-      "id": "BZ11BZ04P2",
-      "morphs": [
-        "Piedsided"
-      ],
-      "hets": [],
-      "sex": "Unknown",
-      "price": 1000,
-      "dob": "2025-12-27",
-      "notes": "Piedsided, 66% het Anery, pos het T+, pos het White Northern, pos het Hyper"
-    },
-    {
-      "id": "BZ12BZ041",
-      "morphs": [
-        "Piedsided"
-      ],
-      "hets": [],
-      "sex": "Unknown",
-      "price": 1000,
-      "dob": "2025-12-19",
-      "notes": "Piedsided, 66% het Anery, 66% het T+, pos het White Northern, pos het Hyper"
-    },
-    {
-      "id": "CZ1",
-      "morphs": [
-        "T+"
-      ],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 400,
-      "dob": "2026-01-29",
+      "dob": "2024",
       "notes": "T+, 50% het Anery, 50% het White Northern, pos het Hyper"
     },
     {
-      "id": "CZ10",
-      "morphs": [],
+      "id": "CZ02",
       "hets": [
         "Piedsided"
       ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-01-29",
+      "price": 400,
+      "dob": "2024",
       "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper"
     },
     {
-      "id": "CZ11",
-      "morphs": [],
+      "id": "CZ06",
       "hets": [
         "Piedsided"
       ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-01-29",
+      "price": 400,
+      "dob": "2024",
       "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper"
     },
     {
-      "id": "CZ2",
+      "id": "CZ03",
+      "hets": [
+        "Piedsided"
+      ],
+      "price": 400,
+      "dob": "2024",
+      "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper"
+    },
+    {
+      "id": "CZ1024",
+      "hets": [
+        "Piedsided"
+      ],
+      "price": 400,
+      "dob": "2024",
+      "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper"
+    },
+    {
+      "id": "CZ1124",
+      "hets": [
+        "Piedsided"
+      ],
+      "price": 400,
+      "dob": "2024",
+      "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper"
+    },
+    {
+      "id": "CZ13",
+      "hets": [
+        "Piedsided"
+      ],
+      "price": 400,
+      "dob": "2024",
+      "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper"
+    },
+    {
+      "id": "DZ07",
+      "hets": [
+        "Piedsided"
+      ],
+      "price": 350,
+      "dob": "2024",
+      "notes": "50% het Albino, 50% het Anery, 50% het T+"
+    },
+    {
+      "id": "DZ10",
+      "hets": [
+        "Piedsided"
+      ],
+      "price": 350,
+      "dob": "2024",
+      "notes": "50% het Albino, 50% het Anery, 50% het T+"
+    },
+    {
+      "id": "DZ13",
+      "hets": [
+        "Piedsided"
+      ],
+      "price": 350,
+      "dob": "2024",
+      "notes": "50% het Albino, 50% het Anery, 50% het T+"
+    },
+    {
+      "id": "DZ11",
+      "hets": [
+        "Piedsided"
+      ],
+      "price": 350,
+      "dob": "2024",
+      "notes": "50% het Albino, 50% het Anery, 50% het T+"
+    },
+    {
+      "id": "DZ9",
+      "hets": [
+        "Piedsided"
+      ],
+      "price": 350,
+      "dob": "2024",
+      "notes": "50% het Albino, 50% het Anery, 50% het T+"
+    },
+    {
+      "id": "AY03",
       "morphs": [
+        "White Northern"
+      ],
+      "sex": "F",
+      "price": 600,
+      "dob": "2024",
+      "notes": "White Northern, 66% het Anery, 66% het Hyper"
+    },
+    {
+      "id": "BZ06",
+      "hets": [
+        "Anery",
+        "Piedsided"
+      ],
+      "sex": "M",
+      "price": 500,
+      "dob": "2024",
+      "notes": "50% het T+, 50% het White Northern, 50% het Hyper"
+    },
+    {
+      "id": "BZ07",
+      "hets": [
+        "Anery",
+        "Piedsided"
+      ],
+      "sex": "M",
+      "price": 500,
+      "dob": "2024",
+      "notes": "50% het T+, 50% het White Northern, 50% het Hyper"
+    },
+    {
+      "id": "BZ09",
+      "hets": [
+        "Anery",
+        "Piedsided"
+      ],
+      "sex": "M",
+      "price": 500,
+      "dob": "2024",
+      "notes": "50% het T+, 50% het White Northern, 50% het Hyper"
+    },
+    {
+      "id": "BZ13",
+      "hets": [
+        "Anery",
+        "Piedsided"
+      ],
+      "sex": "M",
+      "price": 500,
+      "dob": "2024",
+      "notes": "50% het T+, 50% het White Northern, 50% het Hyper"
+    },
+    {
+      "id": "BZ01",
+      "hets": [
+        "Anery",
+        "Piedsided"
+      ],
+      "sex": "M",
+      "price": 500,
+      "dob": "2024",
+      "notes": "50% het T+, 50% het White Northern, 50% het Hyper"
+    },
+    {
+      "id": "BZ03",
+      "hets": [
+        "Anery",
+        "Patchwork"
+      ],
+      "sex": "F",
+      "price": 500,
+      "dob": "2024",
+      "notes": "50% het T+, 50% het White Northern, 50% het Hyper"
+    },
+    {
+      "id": "BZ08",
+      "hets": [
+        "Anery",
+        "Piedsided"
+      ],
+      "sex": "M",
+      "price": 500,
+      "dob": "2024",
+      "notes": "50% het T+, 50% het White Northern, 50% het Hyper"
+    },
+    {
+      "id": "BZ11",
+      "hets": [
+        "Anery",
+        "Whitesided"
+      ],
+      "sex": "F",
+      "price": 500,
+      "dob": "2024",
+      "notes": "50% het T+, 50% het White Northern, 50% het Hyper"
+    },
+    {
+      "id": "BZ14",
+      "hets": [
+        "Anery",
+        "Piedsided"
+      ],
+      "sex": "M",
+      "price": 500,
+      "dob": "2024",
+      "notes": "50% het T+, 50% het White Northern, 50% het Hyper"
+    },
+    {
+      "id": "Alb",
+      "morphs": [
+        "Albino"
+      ],
+      "price": 700,
+      "dob": "2023",
+      "notes": "Albino, pos het Hyper"
+    },
+    {
+      "id": "C",
+      "hets": [
+        "Anery",
+        "T+",
+        "White Northern"
+      ],
+      "sex": "F",
+      "price": 500,
+      "dob": "2022",
+      "notes": "66% het Hyper"
+    },
+    {
+      "id": "E",
+      "sex": "F",
+      "price": 350,
+      "dob": "2022",
+      "notes": "Wild (Prince Regenet Local)"
+    },
+    {
+      "id": "Z",
+      "morphs": [
+        "Piedsided"
+      ],
+      "hets": [
         "T+"
       ],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 400,
-      "dob": "2026-01-29",
-      "notes": "T+, 50% het Anery, 50% het White Northern, pos het Hyper"
-    },
-    {
-      "id": "CZ3",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-01-29",
-      "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper"
-    },
-    {
-      "id": "CZ4",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-01-29",
-      "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper"
-    },
-    {
-      "id": "CZ5",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-01-29",
-      "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper"
-    },
-    {
-      "id": "CZ6",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-01-29",
-      "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper"
-    },
-    {
-      "id": "CZ7",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-01-29",
-      "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper"
-    },
-    {
-      "id": "CZ8",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-01-29",
-      "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper"
-    },
-    {
-      "id": "CZ9",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-01-29",
-      "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper"
-    },
-    {
-      "id": "GZ1",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-01-25",
-      "notes": "50% het T+"
-    },
-    {
-      "id": "GZ11",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-01-25",
-      "notes": "50% het T+"
-    },
-    {
-      "id": "GZ12",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-01-25",
-      "notes": "50% het T+"
-    },
-    {
-      "id": "GZ13",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-01-25",
-      "notes": "50% het T+"
-    },
-    {
-      "id": "GZ14",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-01-25",
-      "notes": "50% het T+"
-    },
-    {
-      "id": "GZ15",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-01-25",
-      "notes": "50% het T+"
-    },
-    {
-      "id": "GZ2",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-01-25",
-      "notes": "50% het T+"
-    },
-    {
-      "id": "GZ4",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-01-25",
-      "notes": "50% het T+"
-    },
-    {
-      "id": "GZ5",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-01-25",
-      "notes": "50% het T+"
-    },
-    {
-      "id": "GZ6",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-01-25",
-      "notes": "50% het T+"
-    },
-    {
-      "id": "GZ7",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-01-25",
-      "notes": "50% het T+"
-    },
-    {
-      "id": "GZ8",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-01-25",
-      "notes": "50% het T+"
-    },
-    {
-      "id": "GZ9",
-      "morphs": [],
-      "hets": [
-        "Piedsided"
-      ],
-      "sex": "Unknown",
-      "price": 200,
-      "dob": "2026-01-25",
-      "notes": "50% het T+"
-    },
-    {
-      "id": "A",
-      "morphs": [
-        "White Northern"
-      ],
-      "hets": [
-        "Anery",
-        "Hyper"
-      ],
-      "sex": "Female",
-      "price": 1000,
+      "sex": "M",
+      "price": 3000,
       "dob": "2022",
-      "notes": "White Northern, 66% het Albino"
+      "notes": "Piedsided"
     },
     {
-      "id": "B",
-      "morphs": [
+      "id": "D",
+      "hets": [
+        "Albino",
         "Anery"
       ],
-      "hets": [
-        "White Northern",
-        "Hyper"
-      ],
-      "sex": "Female",
-      "price": 600,
-      "dob": "2022",
-      "notes": "Anery, 66% het Albino"
+      "sex": "F",
+      "price": 50,
+      "dob": "2020"
     },
     {
-      "id": "Y",
-      "morphs": [
-        "White Northern"
-      ],
-      "hets": [
-        "Anery",
-        "Hyper"
-      ],
-      "sex": "Male",
-      "price": 1000,
-      "dob": "2022",
-      "notes": "White Northern, 66% het Albino"
+      "id": "G",
+      "sex": "F",
+      "price": 300,
+      "dob": "2020"
+    },
+    {
+      "id": "White",
+      "price": 100,
+      "notes": "White Northern"
     }
   ]
 }
