@@ -347,7 +347,8 @@
       "morphs": [
         "Albino"
       ],
-      "price": 700,
+      "sex": "F",
+      "price": 1000,
       "dob": "2023",
       "notes": "Albino, pos het Hyper"
     },
@@ -381,7 +382,7 @@
       "sex": "M",
       "price": 3000,
       "dob": "2022",
-      "notes": "Piedsided"
+      "notes": "Piedsided - This guy is an absolute stalion, he will successfully mate 6 females in a season. Produces beautiful babies! Would sell with female 'C' as a pair that produce T+"
     },
     {
       "id": "D",
@@ -391,7 +392,8 @@
       ],
       "sex": "F",
       "price": 50,
-      "dob": "2020"
+      "dob": "2020",
+      "notes": "This female has scaring and lost toes from previous owner. Easy to handle and has produced some nice babies"
     },
     {
       "id": "G",
@@ -402,7 +404,7 @@
     {
       "id": "White",
       "price": 100,
-      "notes": "White Northern"
+      "notes": "White Northern - This female has some scaring from previous owner, not the prettiest of girls but is very calm, would make a good pet."
     }
   ]
 }
