@@ -9,7 +9,7 @@
       "morphs": [
         "Whitesided"
       ],
-      "price": 2000,
+      "price": 3000,
       "dob": "2025",
       "notes": "Whitesided, 50% het Anery, 66% het T+, pos het White Northern, pos het Hyper"
     },
@@ -18,7 +18,7 @@
       "morphs": [
         "Piedsided"
       ],
-      "price": 1000,
+      "price": 1800,
       "dob": "2025",
       "notes": "Piedsided, 66% het Anery, pos het T+, pos het White Northern, pos het Hyper"
     },
@@ -130,7 +130,7 @@
         "Piedsided"
       ],
       "sex": "M",
-      "price": 1000,
+      "price": 2000,
       "dob": "2024",
       "notes": "T+, 50% het Anery, 50% het White Northern, pos het Hyper"
     },
