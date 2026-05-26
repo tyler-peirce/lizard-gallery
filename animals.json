@@ -139,7 +139,7 @@
       "hets": [
         "Piedsided"
       ],
-      "price": 400,
+      "price": 550,
       "dob": "2024",
       "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper"
     },
@@ -148,7 +148,7 @@
       "hets": [
         "Piedsided"
       ],
-      "price": 400,
+      "price": 550,
       "dob": "2024",
       "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper"
     },
@@ -157,7 +157,7 @@
       "hets": [
         "Piedsided"
       ],
-      "price": 400,
+      "price": 550,
       "dob": "2024",
       "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper"
     },
@@ -166,7 +166,7 @@
       "hets": [
         "Piedsided"
       ],
-      "price": 400,
+      "price": 550,
       "dob": "2024",
       "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper"
     },
@@ -175,7 +175,7 @@
       "hets": [
         "Piedsided"
       ],
-      "price": 400,
+      "price": 550,
       "dob": "2024",
       "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper"
     },
@@ -184,7 +184,7 @@
       "hets": [
         "Piedsided"
       ],
-      "price": 400,
+      "price": 550,
       "dob": "2024",
       "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper"
     },
@@ -239,7 +239,7 @@
         "White Northern"
       ],
       "sex": "F",
-      "price": 600,
+      "price": 1000,
       "dob": "2024",
       "notes": "White Northern, 66% het Anery, 66% het Hyper"
     },
@@ -250,7 +250,7 @@
         "Piedsided"
       ],
       "sex": "M",
-      "price": 500,
+      "price": 650,
       "dob": "2024",
       "notes": "50% het T+, 50% het White Northern, 50% het Hyper"
     },
@@ -261,7 +261,7 @@
         "Piedsided"
       ],
       "sex": "M",
-      "price": 500,
+      "price": 650,
       "dob": "2024",
       "notes": "50% het T+, 50% het White Northern, 50% het Hyper"
     },
@@ -272,7 +272,7 @@
         "Piedsided"
       ],
       "sex": "M",
-      "price": 500,
+      "price": 650,
       "dob": "2024",
       "notes": "50% het T+, 50% het White Northern, 50% het Hyper"
     },
@@ -283,7 +283,7 @@
         "Piedsided"
       ],
       "sex": "M",
-      "price": 500,
+      "price": 650,
       "dob": "2024",
       "notes": "50% het T+, 50% het White Northern, 50% het Hyper"
     },
@@ -294,7 +294,7 @@
         "Piedsided"
       ],
       "sex": "M",
-      "price": 500,
+      "price": 650,
       "dob": "2024",
       "notes": "50% het T+, 50% het White Northern, 50% het Hyper"
     },
@@ -305,7 +305,7 @@
         "Patchwork"
       ],
       "sex": "F",
-      "price": 500,
+      "price": 650,
       "dob": "2024",
       "notes": "50% het T+, 50% het White Northern, 50% het Hyper"
     },
@@ -316,7 +316,7 @@
         "Piedsided"
       ],
       "sex": "M",
-      "price": 500,
+      "price": 650,
       "dob": "2024",
       "notes": "50% het T+, 50% het White Northern, 50% het Hyper"
     },
@@ -327,7 +327,7 @@
         "Whitesided"
       ],
       "sex": "F",
-      "price": 500,
+      "price": 650,
       "dob": "2024",
       "notes": "50% het T+, 50% het White Northern, 50% het Hyper"
     },
@@ -338,7 +338,7 @@
         "Piedsided"
       ],
       "sex": "M",
-      "price": 500,
+      "price": 650,
       "dob": "2024",
       "notes": "50% het T+, 50% het White Northern, 50% het Hyper"
     },
@@ -360,7 +360,7 @@
         "White Northern"
       ],
       "sex": "F",
-      "price": 500,
+      "price": 650,
       "dob": "2022",
       "notes": "66% het Hyper"
     },
@@ -398,13 +398,8 @@
     {
       "id": "G",
       "sex": "F",
-      "price": 300,
+      "price": 350,
       "dob": "2020"
-    },
-    {
-      "id": "White",
-      "price": 100,
-      "notes": "White Northern - This female has some scaring from previous owner, not the prettiest of girls but is very calm, would make a good pet."
     }
   ]
 }
