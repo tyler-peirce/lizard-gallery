@@ -851,6 +851,7 @@
                     <span class="compact-price">${price}</span>
                     ${morphBadges}${hetBadges}
                 </div>
+                ${animal.dob ? `<div class="compact-notes">Born: ${animal.dob}</div>` : ''}
                 ${animal.notes ? `<div class="compact-notes">${animal.notes}</div>` : ''}
             </div>
             <div class="modal-full">
