@@ -800,6 +800,7 @@
             </div>
             <div class="morph-list">${morphBadges}${hetBadges}</div>
             <div class="price">${price}</div>
+            ${animal.dob ? `<div class="card-notes">Born: ${animal.dob}</div>` : ''}
             ${animal.notes ? `<div class="card-notes">${animal.notes}</div>` : ''}
         `;
 
