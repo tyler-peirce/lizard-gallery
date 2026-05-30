@@ -703,67 +703,94 @@
     }
 
     function getFiltered() {
-        const { animals, litters, filterMorph, filterSex } = state;
+        const { animals, litters, breedingGroups, filterMorph, filterSex } = state;
 
-        const matched = animals.filter(a =>
+        // Split into grouped (breeding bundles) and individuals
+        const grouped     = animals.filter(a => a.breeding_group);
+        const individuals = animals.filter(a => !a.breeding_group);
+
+        // ── Individuals: morph + sex filters, then litter capping ──
+        let matched = individuals.filter(a =>
             animalMatchesMorph(a, filterMorph) &&
             (!filterSex || a.sex === filterSex)
         );
-
-        // When a morph filter is active, visuals come before hets
-        let filtered = matched;
         if (filterMorph) {
             const visuals = matched.filter(a =>  animalExpressesMorph(a, filterMorph));
             const hets    = matched.filter(a => !animalExpressesMorph(a, filterMorph));
-            filtered = [...visuals, ...hets];
+            matched = [...visuals, ...hets];
         }
 
-        const seen = {}, hidden = {}, visible = [];
-
-        for (const animal of filtered) {
+        const seen = {}, hidden = {}, capped = [];
+        for (const animal of matched) {
             const lid = animal.litter;
             const max = lid && litters[lid]?.showCount;
-
             if (max) {
                 seen[lid]   = seen[lid]   || 0;
                 hidden[lid] = hidden[lid] || 0;
-                if (seen[lid] < max) { seen[lid]++; visible.push(animal); }
+                if (seen[lid] < max) { seen[lid]++; capped.push(animal); }
                 else { hidden[lid]++; }
             } else {
-                visible.push(animal);
+                capped.push(animal);
             }
         }
 
-        return { visible, hidden };
+        // Order individuals for display: non-litter first, then litter buckets
+        const litterBuckets = {};
+        const noLitter = [];
+        for (const a of capped) {
+            if (a.litter) (litterBuckets[a.litter] = litterBuckets[a.litter] || []).push(a);
+            else noLitter.push(a);
+        }
+
+        // ── Breeding groups: bundles stay intact. Sex filter never splits them.
+        //    Morph filter shows a group only if at least one member matches. ──
+        const groupOrder = Object.keys(breedingGroups);
+        const groupBuckets = {};
+        for (const a of grouped) {
+            (groupBuckets[a.breeding_group] = groupBuckets[a.breeding_group] || []).push(a);
+        }
+        const visibleGroups = [];
+        for (const gid of groupOrder) {
+            const members = groupBuckets[gid] || [];
+            if (members.length === 0) continue;
+            if (filterMorph && !members.some(a => animalMatchesMorph(a, filterMorph))) continue;
+            visibleGroups.push({ id: gid, members });
+        }
+
+        // Flat visible list in on-screen order (group members first, then individuals)
+        const visible = [];
+        for (const g of visibleGroups) visible.push(...g.members);
+        visible.push(...noLitter);
+        for (const bucket of Object.values(litterBuckets)) visible.push(...bucket);
+
+        return { visibleGroups, noLitter, litterBuckets, hidden, visible, visibleCount: visible.length };
     }
 
     // ── Rendering ──────────────────────────────────────────────────────
     function render() {
         renderFilters();
 
-        const { visible, hidden } = getFiltered();
+        const { visibleGroups, noLitter, litterBuckets, hidden, visibleCount } = getFiltered();
         const gallery = document.getElementById('gallery');
         gallery.innerHTML = '';
 
         document.getElementById('count').textContent =
-            `${visible.length} animal${visible.length !== 1 ? 's' : ''} shown`;
+            `${visibleCount} animal${visibleCount !== 1 ? 's' : ''} shown`;
 
-        if (visible.length === 0) {
+        if (visibleCount === 0) {
             gallery.innerHTML = '<div class="empty">No animals match this filter.</div>';
             return;
         }
 
-        const grouped  = {};
-        const noLitter = [];
-
-        for (const a of visible) {
-            if (a.litter) (grouped[a.litter] = grouped[a.litter] || []).push(a);
-            else noLitter.push(a);
+        // Breeding groups first: banner + member cards
+        for (const group of visibleGroups) {
+            gallery.appendChild(makeGroupBanner(group.id));
+            for (const a of group.members) gallery.appendChild(makeCard(a));
         }
 
+        // Then individuals: non-litter first, then litter buckets with notices
         for (const a of noLitter) gallery.appendChild(makeCard(a));
-
-        for (const [lid, group] of Object.entries(grouped)) {
+        for (const [lid, group] of Object.entries(litterBuckets)) {
             for (const a of group) gallery.appendChild(makeCard(a));
             if (hidden[lid] > 0) gallery.appendChild(makeLitterNotice(lid, hidden[lid]));
         }
@@ -827,7 +854,12 @@
         const morphBadges = (animal.morphs || []).map(m => `<span class="${badgeClass(m)}">${m}</span>`).join('');
         const hetBadges   = (animal.hets   || []).map(m => `<span class="badge het">het ${m}</span>`).join('');
         const sexClass = (animal.sex || 'unknown').toLowerCase();
-        const price    = animal.price ? `$${animal.price.toLocaleString()} AUD` : 'POA';
+        const groupPrice = animal.breeding_group
+            ? state.breedingGroups[animal.breeding_group]?.price
+            : null;
+        const priceHtml = groupPrice
+            ? `<div class="card-group-price">Group price: $${groupPrice.toLocaleString()} AUD</div>`
+            : `<div class="price">${animal.price ? `$${animal.price.toLocaleString()} AUD` : 'POA'}</div>`;
 
         const body = document.createElement('div');
         body.className = 'card-body';
@@ -837,7 +869,7 @@
                 <span class="sex-badge ${sexClass}">${animal.sex || '?'}</span>
             </div>
             <div class="morph-list">${morphBadges}${hetBadges}</div>
-            <div class="price">${price}</div>
+            ${priceHtml}
             ${animal.dob ? `<div class="card-notes">Born: ${animal.dob}</div>` : ''}
             ${animal.notes ? `<div class="card-notes">${animal.notes}</div>` : ''}
         `;
@@ -846,6 +878,21 @@
         card.appendChild(body);
         card.onclick = () => openModal(animal);
         return card;
+    }
+
+    function makeGroupBanner(groupId) {
+        const g = state.breedingGroups[groupId] || {};
+        const price = g.price ? `$${g.price.toLocaleString()} AUD / group` : 'Price on application';
+        const div = document.createElement('div');
+        div.className = 'group-banner';
+        div.innerHTML = `
+            <div class="group-banner-top">
+                <span class="group-banner-title">Breeding Group ${groupId}</span>
+                <span class="group-banner-price">${price}</span>
+            </div>
+            ${g.description ? `<div class="group-banner-desc">${g.description}</div>` : ''}
+        `;
+        return div;
     }
 
     function makeLitterNotice(lid, hiddenCount) {
