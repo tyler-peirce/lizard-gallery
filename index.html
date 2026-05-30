@@ -922,7 +922,12 @@
         const morphBadges = (animal.morphs || []).map(b => `<span class="${badgeClass(b)}">${b}</span>`).join('');
         const hetBadges   = (animal.hets   || []).map(b => `<span class="badge het">het ${b}</span>`).join('');
         const sexClass = (animal.sex || 'unknown').toLowerCase();
-        const price    = animal.price ? `$${animal.price.toLocaleString()} AUD` : 'Price on application';
+        const groupPrice = animal.breeding_group
+            ? state.breedingGroups[animal.breeding_group]?.price
+            : null;
+        const price = groupPrice
+            ? `$${groupPrice.toLocaleString()} AUD (Group ${animal.breeding_group})`
+            : (animal.price ? `$${animal.price.toLocaleString()} AUD` : 'Price on application');
         const visible  = getFiltered().visible;
 
         document.getElementById('modal-info').innerHTML = `
