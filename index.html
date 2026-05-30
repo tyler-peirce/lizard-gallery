@@ -211,6 +211,27 @@
         }
         .card-group-price { font-size: 0.85rem; font-weight: 600; color: var(--accent); }
 
+        /* ── Section divider (between breeding groups and individual animals) ── */
+        .section-divider {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.75rem 0 0.5rem;
+            color: var(--text-dim);
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+        }
+        .section-divider::before,
+        .section-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
         /* ── Empty state ── */
         .empty { grid-column: 1 / -1; text-align: center; padding: 4rem; color: var(--text-dim); }
 
@@ -786,6 +807,15 @@
         for (const group of visibleGroups) {
             gallery.appendChild(makeGroupBanner(group.id));
             for (const a of group.members) gallery.appendChild(makeCard(a));
+        }
+
+        // Divider to separate group bundles from individually-listed animals
+        const hasIndividuals = noLitter.length > 0 || Object.keys(litterBuckets).length > 0;
+        if (visibleGroups.length > 0 && hasIndividuals) {
+            const divider = document.createElement('div');
+            divider.className = 'section-divider';
+            divider.textContent = 'Individual Animals';
+            gallery.appendChild(divider);
         }
 
         // Then individuals: non-litter first, then litter buckets with notices
