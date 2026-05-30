@@ -3,6 +3,28 @@
     "watermark": "TylerPeirce",
     "formspreeId": "xykobwad"
   },
+  "breeding_groups": {
+    "Q1": {
+      "price": 2250,
+      "description": "This breeding group..."
+    },
+    "Q2": {
+      "price": 2150,
+      "description": ""
+    },
+    "Q3": {
+      "price": 2000,
+      "description": ""
+    },
+    "Q4": {
+      "price": 2000,
+      "description": ""
+    },
+    "Q5": {
+      "price": 4000,
+      "description": ""
+    }
+  },
   "animals": [
     {
       "id": "BZ05ZW1",
@@ -33,6 +55,7 @@
     },
     {
       "id": "EZ05",
+      "breeding_group": "Q1",
       "hets": [
         "Piedsided"
       ],
@@ -42,6 +65,7 @@
     },
     {
       "id": "EZ09",
+      "breeding_group": "Q2",
       "hets": [
         "Piedsided"
       ],
@@ -51,6 +75,7 @@
     },
     {
       "id": "EZ10",
+      "breeding_group": "Q5",
       "hets": [
         "Piedsided"
       ],
@@ -60,6 +85,7 @@
     },
     {
       "id": "EZ12",
+      "breeding_group": "Q3",
       "hets": [
         "Piedsided"
       ],
@@ -78,6 +104,7 @@
     },
     {
       "id": "EZ14",
+      "breeding_group": "Q4",
       "hets": [
         "Piedsided"
       ],
@@ -136,6 +163,7 @@
     },
     {
       "id": "CZ02",
+      "breeding_group": "Q4",
       "hets": [
         "Piedsided"
       ],
@@ -145,6 +173,7 @@
     },
     {
       "id": "CZ06",
+      "breeding_group": "Q2",
       "hets": [
         "Piedsided"
       ],
@@ -154,6 +183,7 @@
     },
     {
       "id": "CZ03",
+      "breeding_group": "Q1",
       "hets": [
         "Piedsided"
       ],
@@ -172,6 +202,7 @@
     },
     {
       "id": "CZ1124",
+      "breeding_group": "Q3",
       "hets": [
         "Piedsided"
       ],
@@ -190,6 +221,7 @@
     },
     {
       "id": "DZ07",
+      "breeding_group": "Q4",
       "hets": [
         "Piedsided"
       ],
@@ -199,6 +231,7 @@
     },
     {
       "id": "DZ10",
+      "breeding_group": "Q3",
       "hets": [
         "Piedsided"
       ],
@@ -208,6 +241,7 @@
     },
     {
       "id": "DZ13",
+      "breeding_group": "Q1",
       "hets": [
         "Piedsided"
       ],
@@ -217,6 +251,7 @@
     },
     {
       "id": "DZ11",
+      "breeding_group": "Q2",
       "hets": [
         "Piedsided"
       ],
@@ -245,6 +280,7 @@
     },
     {
       "id": "BZ06",
+      "breeding_group": "Q1",
       "hets": [
         "Anery",
         "Piedsided"
@@ -256,6 +292,7 @@
     },
     {
       "id": "BZ07",
+      "breeding_group": "Q4",
       "hets": [
         "Anery",
         "Piedsided"
@@ -267,6 +304,7 @@
     },
     {
       "id": "BZ09",
+      "breeding_group": "Q3",
       "hets": [
         "Anery",
         "Piedsided"
@@ -289,6 +327,7 @@
     },
     {
       "id": "BZ01",
+      "breeding_group": "Q5",
       "hets": [
         "Anery",
         "Piedsided"
@@ -311,6 +350,7 @@
     },
     {
       "id": "BZ08",
+      "breeding_group": "Q2",
       "hets": [
         "Anery",
         "Piedsided"
@@ -353,6 +393,7 @@
     },
     {
       "id": "C",
+      "breeding_group": "Q5",
       "hets": [
         "Anery",
         "T+",
@@ -372,6 +413,7 @@
     },
     {
       "id": "Z",
+      "breeding_group": "Q5",
       "morphs": [
         "Piedsided"
       ],
