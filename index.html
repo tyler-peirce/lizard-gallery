@@ -733,7 +733,7 @@
         // ── Individuals: morph + sex filters, then litter capping ──
         let matched = individuals.filter(a =>
             animalMatchesMorph(a, filterMorph) &&
-            (!filterSex || a.sex === filterSex)
+            (!filterSex || (filterSex === 'unknown' ? !a.sex : a.sex === filterSex))
         );
         if (filterMorph) {
             const visuals = matched.filter(a =>  animalExpressesMorph(a, filterMorph));
@@ -850,13 +850,19 @@
         for (const m of COMBO_MORPHS) morphEl.appendChild(mkBtn(m, m, 'morph', 'combo'));
 
         sexEl.appendChild(mkBtn('Any',     null,      'sex'));
-        sexEl.appendChild(mkBtn('Male',    'Male',    'sex'));
-        sexEl.appendChild(mkBtn('Female',  'Female',  'sex'));
-        sexEl.appendChild(mkBtn('Unknown', 'Unknown', 'sex'));
+        sexEl.appendChild(mkBtn('Male',    'M',       'sex'));
+        sexEl.appendChild(mkBtn('Female',  'F',       'sex'));
+        sexEl.appendChild(mkBtn('Unknown', 'unknown', 'sex'));
     }
 
     function badgeClass(morph) {
         return COMBO_MORPHS.includes(morph) ? 'badge combo' : 'badge morph';
+    }
+
+    function sexClassName(sex) {
+        if (sex === 'M') return 'male';
+        if (sex === 'F') return 'female';
+        return 'unknown';
     }
 
     function makeCard(animal) {
@@ -883,7 +889,7 @@
         // Body section
         const morphBadges = (animal.morphs || []).map(m => `<span class="${badgeClass(m)}">${m}</span>`).join('');
         const hetBadges   = (animal.hets   || []).map(m => `<span class="badge het">het ${m}</span>`).join('');
-        const sexClass = (animal.sex || 'unknown').toLowerCase();
+        const sexClass = sexClassName(animal.sex);
         const groupPrice = animal.breeding_group
             ? state.breedingGroups[animal.breeding_group]?.price
             : null;
@@ -951,7 +957,7 @@
 
         const morphBadges = (animal.morphs || []).map(b => `<span class="${badgeClass(b)}">${b}</span>`).join('');
         const hetBadges   = (animal.hets   || []).map(b => `<span class="badge het">het ${b}</span>`).join('');
-        const sexClass = (animal.sex || 'unknown').toLowerCase();
+        const sexClass = sexClassName(animal.sex);
         const groupPrice = animal.breeding_group
             ? state.breedingGroups[animal.breeding_group]?.price
             : null;
