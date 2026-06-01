@@ -151,7 +151,8 @@ def main():
     existing_order = [a["id"] for a in data["animals"]]
 
     report = {"removed": [], "added": [], "skipped_no_photo": [],
-              "price": [], "sex": [], "bg": [], "notes": [], "poa": []}
+              "price": [], "sex": [], "bg": [], "notes": [], "poa": [],
+              "morphs": [], "hets": [], "dob": [], "groups": []}
 
     def build(aid, prev):
         """Build a fully-synced animal dict from sheet row `aid`, using `prev`
@@ -183,6 +184,12 @@ def main():
                 report["bg"].append((aid, prev.get("breeding_group"), bg))
             if (prev.get("notes") or None) != (notes or None):
                 report["notes"].append((aid, prev.get("notes"), notes))
+            if (prev.get("morphs") or None) != morphs:
+                report["morphs"].append((aid, prev.get("morphs"), morphs))
+            if (prev.get("hets") or None) != hets:
+                report["hets"].append((aid, prev.get("hets"), hets))
+            if (prev.get("dob") or None) != (dob or None):
+                report["dob"].append((aid, prev.get("dob"), dob))
 
         return ordered_animal({
             "id": aid, "breeding_group": bg, "morphs": morphs, "hets": hets,
@@ -241,6 +248,19 @@ def main():
             desc = (old_groups.get(gid) or {}).get("description", "")
         new_groups[gid] = {"price": groups[gid]["price"], "description": desc}
 
+    # Track breeding-group changes (added / removed / price / description).
+    for gid in sorted(set(old_groups) | set(new_groups)):
+        old, new = old_groups.get(gid), new_groups.get(gid)
+        if old is None:
+            report["groups"].append(f"{gid}: ADDED (${new['price']:,})")
+        elif new is None:
+            report["groups"].append(f"{gid}: REMOVED")
+        else:
+            if old.get("price") != new["price"]:
+                report["groups"].append(f"{gid}: price {old.get('price')} -> {new['price']}")
+            if (old.get("description") or "") != (new["description"] or ""):
+                report["groups"].append(f"{gid}: description updated")
+
     # 4) Assemble output preserving top-level order: config, breeding_groups, animals.
     out = {}
     for k, v in data.items():
@@ -270,8 +290,12 @@ def main():
     show("Skipped (for sale but NO photos/<id>/ folder)", report["skipped_no_photo"], lambda x: x)
     show("Price changes", report["price"], lambda x: f"{x[0]}: {x[1]} -> {x[2]}")
     show("Sex changes", report["sex"], lambda x: f"{x[0]}: {x[1]} -> {x[2]}")
-    show("Breeding-group changes", report["bg"], lambda x: f"{x[0]}: {x[1]} -> {x[2]}")
+    show("Animal group-membership changes", report["bg"], lambda x: f"{x[0]}: {x[1]} -> {x[2]}")
+    show("Morph changes", report["morphs"], lambda x: f"{x[0]}: {x[1]} -> {x[2]}")
+    show("Het changes", report["hets"], lambda x: f"{x[0]}: {x[1]} -> {x[2]}")
+    show("DOB changes", report["dob"], lambda x: f"{x[0]}: {x[1]} -> {x[2]}")
     show("Note changes", report["notes"], lambda x: f"{x[0]}: {x[1]!r} -> {x[2]!r}")
+    show("Breeding-group block changes", report["groups"], lambda x: x)
     show("Listed as POA (blank price)", report["poa"], lambda x: x)
 
     if not changed:
