@@ -80,6 +80,32 @@
         /* ── Grid ── */
         main { padding: 1.75rem; max-width: 1400px; margin: 0 auto; }
 
+        .deal-banner {
+            max-width: 1400px;
+            margin: 1.75rem auto 0;
+            padding: 1rem 1.25rem;
+            background: linear-gradient(135deg, rgba(201,169,92,0.14), rgba(201,169,92,0.05));
+            border: 1px solid var(--accent-dim);
+            border-left: 4px solid var(--accent);
+            border-radius: var(--radius);
+        }
+        .deal-banner .deal-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+        .deal-banner .deal-body {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--text);
+        }
+
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -544,6 +570,11 @@
         <div class="filter-group" id="sex-filters"></div>
     </div>
 </header>
+
+<div class="deal-banner" id="deal-banner" style="display:none">
+    <div class="deal-title">&#9733; Current Deal</div>
+    <div class="deal-body" id="deal-body"></div>
+</div>
 
 <main>
     <div class="grid" id="gallery"></div>
@@ -1183,6 +1214,10 @@
             state.animals = data.animals || [];
             state.litters = data.litters || {};
             state.breedingGroups = data.breeding_groups || {};
+            if (CONFIG.deal) {
+                document.getElementById('deal-body').textContent = CONFIG.deal;
+                document.getElementById('deal-banner').style.display = '';
+            }
             initGate();
             render();
         })
