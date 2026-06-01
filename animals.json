@@ -12,14 +12,6 @@
       "price": 2150,
       "description": "Breeding group includes the 4 tub rack they are currently in, so a full set up for them to be kept. A complete breeding package. This breeding group includes a couple with very clear bellies which is more of an indication to whitesided gene. All individuals are from unrelated females. With the genetics in the group there is lots of possibilties to make multigene morphs."
     },
-    "Q3": {
-      "price": 2000,
-      "description": "Breeding group includes the 4 tub rack they are currently in, so a full set up for them to be kept. A complete breeding package. All individuals are from unrelated females. With the genetics in the group there is lots of possibilties to make multigene morphs. This group includes one that will probably be too small to breed next year."
-    },
-    "Q4": {
-      "price": 2000,
-      "description": "Breeding group includes the 4 tub rack they are currently in, so a full set up for them to be kept. A complete breeding package. All individuals are from unrelated females. With the genetics in the group there is lots of possibilties to make multigene morphs. This group includes one that will probably be too small to breed next year."
-    },
     "Q5": {
       "price": 4000,
       "description": "Breeding group includes the 4 tub rack they are currently in, so a full set up for them to be kept. A complete breeding package. This group includes visual piedsided male. Lots of possibilities from this group."
@@ -59,7 +51,7 @@
       "hets": [
         "Piedsided"
       ],
-      "price": 300,
+      "price": 400,
       "dob": "2025-01-22",
       "notes": "50% het T+",
       "sex": "M"
@@ -70,25 +62,13 @@
       "hets": [
         "Piedsided"
       ],
-      "price": 300,
+      "price": 400,
       "dob": "2025-01-22",
       "notes": "50% het T+",
       "sex": "M"
     },
     {
       "id": "EZ10",
-      "breeding_group": "Q5",
-      "hets": [
-        "Piedsided"
-      ],
-      "price": 300,
-      "dob": "2025-01-22",
-      "notes": "50% het T+",
-      "sex": "F"
-    },
-    {
-      "id": "EZ12",
-      "breeding_group": "Q3",
       "hets": [
         "Piedsided"
       ],
@@ -108,7 +88,6 @@
     },
     {
       "id": "EZ14",
-      "breeding_group": "Q4",
       "hets": [
         "Piedsided"
       ],
@@ -167,17 +146,6 @@
       "notes": "T+, 50% het Anery, 50% het White Northern, pos het Hyper"
     },
     {
-      "id": "CZ02",
-      "breeding_group": "Q4",
-      "hets": [
-        "Piedsided"
-      ],
-      "price": 550,
-      "dob": "2024-12-23",
-      "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper",
-      "sex": "F"
-    },
-    {
       "id": "CZ06",
       "breeding_group": "Q2",
       "hets": [
@@ -194,7 +162,7 @@
       "hets": [
         "Piedsided"
       ],
-      "price": 550,
+      "price": 600,
       "dob": "2024-12-23",
       "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper",
       "sex": "F"
@@ -210,7 +178,6 @@
     },
     {
       "id": "CZ1124",
-      "breeding_group": "Q3",
       "hets": [
         "Piedsided"
       ],
@@ -230,18 +197,6 @@
     },
     {
       "id": "DZ07",
-      "breeding_group": "Q4",
-      "hets": [
-        "Piedsided"
-      ],
-      "price": 350,
-      "dob": "2024-12-22",
-      "notes": "50% het Albino, 50% het Anery, 50% het T+",
-      "sex": "F"
-    },
-    {
-      "id": "DZ10",
-      "breeding_group": "Q3",
       "hets": [
         "Piedsided"
       ],
@@ -256,7 +211,7 @@
       "hets": [
         "Piedsided"
       ],
-      "price": 350,
+      "price": 400,
       "dob": "2024-12-22",
       "notes": "50% het Albino, 50% het Anery, 50% het T+",
       "sex": "F"
@@ -267,7 +222,7 @@
       "hets": [
         "Piedsided"
       ],
-      "price": 350,
+      "price": 400,
       "dob": "2024-12-22",
       "notes": "50% het Albino, 50% het Anery, 50% het T+",
       "sex": "F"
@@ -299,25 +254,12 @@
         "Piedsided"
       ],
       "sex": "M",
-      "price": 650,
+      "price": 700,
       "dob": "2024-12-09",
       "notes": "50% het T+, 50% het White Northern, 50% het Hyper"
     },
     {
       "id": "BZ07",
-      "breeding_group": "Q4",
-      "hets": [
-        "Anery",
-        "Piedsided"
-      ],
-      "sex": "M",
-      "price": 650,
-      "dob": "2024-12-09",
-      "notes": "50% het T+, 50% het White Northern, 50% het Hyper"
-    },
-    {
-      "id": "BZ09",
-      "breeding_group": "Q3",
       "hets": [
         "Anery",
         "Piedsided"
@@ -351,17 +293,6 @@
       "notes": "50% het T+, 50% het White Northern, 50% het Hyper"
     },
     {
-      "id": "BZ03",
-      "hets": [
-        "Anery",
-        "Patchwork"
-      ],
-      "sex": "F",
-      "price": 650,
-      "dob": "2024-12-09",
-      "notes": "50% het T+, 50% het White Northern, 50% het Hyper"
-    },
-    {
       "id": "BZ08",
       "breeding_group": "Q2",
       "hets": [
@@ -375,6 +306,7 @@
     },
     {
       "id": "BZ11",
+      "breeding_group": "Q5",
       "hets": [
         "Anery",
         "Whitesided"
