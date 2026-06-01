@@ -16,6 +16,8 @@ WHAT IT DOES
       * hets           <- every morph column whose value is "100% het"
       * notes          <- visual morphs, then the remaining het percentages
                           (e.g. "T+, 50% het Anery, pos het Hyper")
+      * description    <- "Animal description" column (free-text blurb about
+                          the individual animal; shown separately from notes)
   - Removes animals marked "Sold" in the spreadsheet.
   - Adds NEW for-sale animals that aren't in animals.json yet, but ONLY when a
     photos/<id>/ folder already exists (so we never create a broken card).
@@ -56,7 +58,7 @@ COLMAP = [
 ]
 
 # Canonical key order for each animal object in animals.json.
-KEY_ORDER = ["id", "breeding_group", "morphs", "hets", "price", "dob", "notes", "sex"]
+KEY_ORDER = ["id", "breeding_group", "morphs", "hets", "price", "dob", "notes", "description", "sex"]
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_XLSX = os.path.join(HERE, "Catalogue-of-Lizards_Tyler-Peirce.xlsx")
@@ -152,7 +154,7 @@ def main():
 
     report = {"removed": [], "added": [], "skipped_no_photo": [],
               "price": [], "sex": [], "bg": [], "notes": [], "poa": [],
-              "morphs": [], "hets": [], "dob": [], "groups": []}
+              "morphs": [], "hets": [], "dob": [], "groups": [], "description": []}
 
     def build(aid, prev):
         """Build a fully-synced animal dict from sheet row `aid`, using `prev`
@@ -174,6 +176,9 @@ def main():
         if notes is None and prev.get("notes"):
             notes = prev["notes"]
 
+        # Free-text per-animal blurb from the "Animal description" column.
+        description = cell(row.get("Animal description")) or None
+
         # Change tracking (vs previous json) for the report
         if prev:
             if prev.get("price") != price:
@@ -190,10 +195,13 @@ def main():
                 report["hets"].append((aid, prev.get("hets"), hets))
             if (prev.get("dob") or None) != (dob or None):
                 report["dob"].append((aid, prev.get("dob"), dob))
+            if (prev.get("description") or None) != description:
+                report["description"].append((aid, prev.get("description"), description))
 
         return ordered_animal({
             "id": aid, "breeding_group": bg, "morphs": morphs, "hets": hets,
-            "price": price, "dob": dob, "notes": notes, "sex": sex,
+            "price": price, "dob": dob, "notes": notes,
+            "description": description, "sex": sex,
         })
 
     new_animals = []
@@ -295,6 +303,7 @@ def main():
     show("Het changes", report["hets"], lambda x: f"{x[0]}: {x[1]} -> {x[2]}")
     show("DOB changes", report["dob"], lambda x: f"{x[0]}: {x[1]} -> {x[2]}")
     show("Note changes", report["notes"], lambda x: f"{x[0]}: {x[1]!r} -> {x[2]!r}")
+    show("Description changes", report["description"], lambda x: f"{x[0]}: {x[1]!r} -> {x[2]!r}")
     show("Breeding-group block changes", report["groups"], lambda x: x)
     show("Listed as POA (blank price)", report["poa"], lambda x: x)
 
