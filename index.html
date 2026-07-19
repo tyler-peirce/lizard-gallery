@@ -927,7 +927,8 @@
             ? state.breedingGroups[animal.breeding_group]?.price
             : null;
         const priceHtml = groupPrice
-            ? `<div class="card-group-price">Group price: $${groupPrice.toLocaleString()} AUD</div>`
+            ? `<div class="card-group-price">Group price: $${groupPrice.toLocaleString()} AUD</div>` +
+              (animal.price ? `<div class="card-group-price">$${animal.price.toLocaleString()} AUD individually</div>` : '')
             : `<div class="price">${animal.price ? `$${animal.price.toLocaleString()} AUD` : 'POA'}</div>`;
 
         const body = document.createElement('div');
@@ -996,7 +997,8 @@
             ? state.breedingGroups[animal.breeding_group]?.price
             : null;
         const price = groupPrice
-            ? `$${groupPrice.toLocaleString()} AUD (Group ${animal.breeding_group})`
+            ? `$${groupPrice.toLocaleString()} AUD (Group ${animal.breeding_group})` +
+              (animal.price ? ` &middot; $${animal.price.toLocaleString()} AUD individually` : '')
             : (animal.price ? `$${animal.price.toLocaleString()} AUD` : 'Price on application');
         const visible  = getFiltered().visible;
 
@@ -1211,7 +1213,8 @@
         .then(r => r.json())
         .then(data => {
             CONFIG        = Object.assign({ watermark: '', formspreeId: '' }, data.config || {});
-            state.animals = data.animals || [];
+            // Paused animals stay in animals.json (data preserved) but are hidden.
+            state.animals = (data.animals || []).filter(a => !a.paused);
             state.litters = data.litters || {};
             state.breedingGroups = data.breeding_groups || {};
             if (CONFIG.deal) {

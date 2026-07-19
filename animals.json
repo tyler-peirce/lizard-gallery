@@ -6,7 +6,7 @@
   },
   "breeding_groups": {
     "Q1": {
-      "price": 2250,
+      "price": 2100,
       "description": "Breeding group includes the 4 tub rack they are currently in, so a full set up for them to be kept. A complete breeding package. This group is made up by mostly individuals with very clear bellies, which is a higher indication of whitesided. All show very beautiful patterns. All individuals are from unrelated females. With the genetics in the group there is lots of possibilties to make multigene morphs."
     },
     "Q5": {
@@ -20,7 +20,7 @@
       "morphs": [
         "Whitesided"
       ],
-      "price": 3000,
+      "price": 2000,
       "dob": "2025-12-19",
       "notes": "Whitesided, 50% het Anery, 66% het T+, pos het White Northern, pos het Hyper"
     },
@@ -29,7 +29,7 @@
       "morphs": [
         "Piedsided"
       ],
-      "price": 1800,
+      "price": 1200,
       "dob": "2025-12-19",
       "notes": "Piedsided, 66% het Anery, pos het T+, pos het White Northern, pos het Hyper"
     },
@@ -40,7 +40,8 @@
       ],
       "price": 300,
       "dob": "2025-01-22",
-      "notes": "50% het T+"
+      "notes": "50% het T+",
+      "paused": true
     },
     {
       "id": "EZ05",
@@ -54,42 +55,14 @@
       "sex": "M"
     },
     {
-      "id": "EZ10",
-      "hets": [
-        "Piedsided"
-      ],
-      "price": 300,
-      "dob": "2025-01-22",
-      "notes": "50% het T+",
-      "sex": "F"
-    },
-    {
-      "id": "EZ13",
-      "hets": [
-        "Piedsided"
-      ],
-      "price": 300,
-      "dob": "2025-01-22",
-      "notes": "50% het T+"
-    },
-    {
-      "id": "EZ14",
-      "hets": [
-        "Piedsided"
-      ],
-      "price": 300,
-      "dob": "2025-01-22",
-      "notes": "50% het T+",
-      "sex": "M"
-    },
-    {
       "id": "EZ01",
       "hets": [
         "Piedsided"
       ],
       "price": 300,
       "dob": "2025-01-22",
-      "notes": "50% het T+"
+      "notes": "50% het T+",
+      "paused": true
     },
     {
       "id": "EZ03",
@@ -98,25 +71,8 @@
       ],
       "price": 300,
       "dob": "2025-01-22",
-      "notes": "50% het T+"
-    },
-    {
-      "id": "EZ06",
-      "hets": [
-        "Piedsided"
-      ],
-      "price": 300,
-      "dob": "2025-01-22",
-      "notes": "50% het T+"
-    },
-    {
-      "id": "EZ08",
-      "hets": [
-        "Piedsided"
-      ],
-      "price": 300,
-      "dob": "2025-01-22",
-      "notes": "50% het T+"
+      "notes": "50% het T+",
+      "paused": true
     },
     {
       "id": "CZ07",
@@ -149,7 +105,8 @@
       ],
       "price": 550,
       "dob": "2024-12-23",
-      "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper"
+      "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper",
+      "paused": true
     },
     {
       "id": "CZ1124",
@@ -159,7 +116,8 @@
       "price": 550,
       "dob": "2024-12-23",
       "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper",
-      "sex": "F"
+      "sex": "F",
+      "paused": true
     },
     {
       "id": "CZ13",
@@ -168,7 +126,8 @@
       ],
       "price": 550,
       "dob": "2024-12-23",
-      "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper"
+      "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper",
+      "paused": true
     },
     {
       "id": "DZ07",
@@ -178,7 +137,8 @@
       "price": 350,
       "dob": "2024-12-22",
       "notes": "50% het Albino, 50% het Anery, 50% het T+",
-      "sex": "F"
+      "sex": "F",
+      "paused": true
     },
     {
       "id": "DZ13",
@@ -199,14 +159,15 @@
       "price": 350,
       "dob": "2024-12-22",
       "notes": "50% het Albino, 50% het Anery, 50% het T+",
-      "sex": "M"
+      "sex": "M",
+      "paused": true
     },
     {
       "id": "AY03",
       "morphs": [
         "White Northern"
       ],
-      "price": 1000,
+      "price": 800,
       "dob": "2024-12-09",
       "notes": "White Northern, 66% het Anery, 66% het Hyper",
       "sex": "F"
@@ -285,7 +246,7 @@
       "morphs": [
         "Albino"
       ],
-      "price": 1000,
+      "price": 800,
       "dob": "2023",
       "notes": "Albino, pos het Hyper",
       "sex": "F"
@@ -308,6 +269,7 @@
       "price": 350,
       "dob": "2022",
       "notes": "Wild (Prince Regenet Local)",
+      "description": "This female is a big girl, she is pure local form. She has made some lovely babies passing on the granite like patterning distinct to this local. She can be a bit cage defensive, but once out handles very easily.",
       "sex": "F"
     },
     {
@@ -319,7 +281,7 @@
       "hets": [
         "T+"
       ],
-      "price": 3000,
+      "price": 2500,
       "dob": "2022",
       "notes": "Piedsided",
       "sex": "M"
@@ -328,7 +290,9 @@
       "id": "G",
       "price": 350,
       "dob": "2020",
-      "sex": "F"
+      "description": "This female is huge! She gave me a litter of 18 this last season, the babies were all very big on birth and incredibly healthy. A fantastic lizard to add to your collection as an outcross to bring in some healthy new genetics.",
+      "sex": "F",
+      "paused": true
     }
   ]
 }

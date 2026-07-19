@@ -19,6 +19,8 @@ WHAT IT DOES
       * description    <- "Animal description" column (free-text blurb about
                           the individual animal; shown separately from notes)
   - Removes animals marked "Sold" in the spreadsheet.
+  - Animals with "Pause" in Wholesale_price_offer stay in animals.json with
+    "paused": true (the website hides them); clearing the cell un-pauses them.
   - Adds NEW for-sale animals that aren't in animals.json yet, but ONLY when a
     photos/<id>/ folder already exists (so we never create a broken card).
   - Rebuilds the top-level "breeding_groups" block (price + description),
@@ -58,7 +60,7 @@ COLMAP = [
 ]
 
 # Canonical key order for each animal object in animals.json.
-KEY_ORDER = ["id", "breeding_group", "morphs", "hets", "price", "dob", "notes", "description", "sex"]
+KEY_ORDER = ["id", "breeding_group", "morphs", "hets", "price", "dob", "notes", "description", "sex", "paused"]
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_XLSX = os.path.join(HERE, "Catalogue-of-Lizards_Tyler-Peirce.xlsx")
@@ -75,6 +77,12 @@ def is_sold(row):
     rough = str(cell(row.get("Rough_price"))).lower()
     whole = str(cell(row.get("Wholesale_price_offer"))).lower()
     return rough == "sold" or whole == "sold"
+
+
+def is_paused(row):
+    """"Pause" (or "Paused") in Wholesale_price_offer hides the animal on the site."""
+    whole = str(cell(row.get("Wholesale_price_offer"))).lower()
+    return whole.startswith("pause")
 
 
 def fmt_dob(value):
@@ -154,7 +162,8 @@ def main():
 
     report = {"removed": [], "added": [], "skipped_no_photo": [],
               "price": [], "sex": [], "bg": [], "notes": [], "poa": [],
-              "morphs": [], "hets": [], "dob": [], "groups": [], "description": []}
+              "morphs": [], "hets": [], "dob": [], "groups": [], "description": [],
+              "paused": [], "unpaused": []}
 
     def build(aid, prev):
         """Build a fully-synced animal dict from sheet row `aid`, using `prev`
@@ -170,6 +179,8 @@ def main():
         sex = cell(row.get("Sex")) or None
         dob = fmt_dob(cell(row.get("Birth_date")))
         bg = (cell(row.get("Breeding group")) or None) if not is_sold(row) else None
+        # True hides the animal on the site; None (dropped from json) shows it.
+        paused = True if is_paused(row) else None
 
         # Preserve a hand-typed note when the columns yield nothing derivable.
         notes = derived_notes
@@ -197,11 +208,17 @@ def main():
                 report["dob"].append((aid, prev.get("dob"), dob))
             if (prev.get("description") or None) != description:
                 report["description"].append((aid, prev.get("description"), description))
+            if not prev.get("paused") and paused:
+                report["paused"].append(aid)
+            elif prev.get("paused") and not paused:
+                report["unpaused"].append(aid)
+        elif paused:
+            report["paused"].append(aid)
 
         return ordered_animal({
             "id": aid, "breeding_group": bg, "morphs": morphs, "hets": hets,
             "price": price, "dob": dob, "notes": notes,
-            "description": description, "sex": sex,
+            "description": description, "sex": sex, "paused": paused,
         })
 
     new_animals = []
@@ -235,7 +252,7 @@ def main():
     groups = {}        # id -> {price, members[]}
     for aid, row in sheet.items():
         bg = cell(row.get("Breeding group"))
-        if bg and not is_sold(row):
+        if bg and not is_sold(row) and not is_paused(row):
             grp = groups.setdefault(bg, {"price": None, "members": []})
             grp["members"].append(aid)
             gp = cell(row.get("Breeding group price"))
@@ -294,6 +311,8 @@ def main():
                 print("  " + fmt(it))
 
     show("Removed (sold)", report["removed"], lambda x: x)
+    show("Paused (hidden from site)", report["paused"], lambda x: x)
+    show("Un-paused (visible again)", report["unpaused"], lambda x: x)
     show("Added (new + photos found)", report["added"], lambda x: x)
     show("Skipped (for sale but NO photos/<id>/ folder)", report["skipped_no_photo"], lambda x: x)
     show("Price changes", report["price"], lambda x: f"{x[0]}: {x[1]} -> {x[2]}")
