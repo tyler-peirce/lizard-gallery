@@ -646,7 +646,7 @@
     }
 
     // Paints one photo onto a canvas with watermark.
-    // large=false → 480×360, cover crop   (card thumbnails)
+    // large=false → 480×360, whole image over blurred fill  (card thumbnails)
     // large=true  → matches container × devicePixelRatio, contain fit  (modal full view)
     function paintImage(src, canvas, large, onDone) {
         let CW, CH;
@@ -675,8 +675,19 @@
                 ctx.fillRect(0, 0, CW, CH);
                 ctx.drawImage(img, (CW - w) / 2, (CH - h) / 2, w, h);
             } else {
-                // Cover: crop to fill card
-                const scale = Math.max(CW / img.naturalWidth, CH / img.naturalHeight);
+                // Whole animal always visible: blurred cover-fill behind,
+                // full image contain-fitted on top (no hard letterbox bars).
+                // Oversize the blurred layer slightly so blur sampling never
+                // leaves a transparent halo at the canvas edges.
+                const cover = Math.max(CW / img.naturalWidth, CH / img.naturalHeight) * 1.15;
+                const bw = img.naturalWidth  * cover;
+                const bh = img.naturalHeight * cover;
+                ctx.filter = 'blur(14px)';
+                ctx.drawImage(img, (CW - bw) / 2, (CH - bh) / 2, bw, bh);
+                ctx.filter = 'none';
+                ctx.fillStyle = 'rgba(0,0,0,0.25)';   // dim the fill so the photo pops
+                ctx.fillRect(0, 0, CW, CH);
+                const scale = Math.min(CW / img.naturalWidth, CH / img.naturalHeight);
                 const w = img.naturalWidth  * scale;
                 const h = img.naturalHeight * scale;
                 ctx.drawImage(img, (CW - w) / 2, (CH - h) / 2, w, h);
