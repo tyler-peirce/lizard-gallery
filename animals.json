@@ -16,25 +16,6 @@
       "notes": "Whitesided, 50% het Anery, 66% het T+, pos het White Northern, pos het Hyper"
     },
     {
-      "id": "BZ10BZ041",
-      "morphs": [
-        "Piedsided"
-      ],
-      "price": 1200,
-      "dob": "2025-12-19",
-      "notes": "Piedsided, 66% het Anery, pos het T+, pos het White Northern, pos het Hyper"
-    },
-    {
-      "id": "EZ05",
-      "hets": [
-        "Piedsided"
-      ],
-      "price": 400,
-      "dob": "2025-01-22",
-      "notes": "50% het T+",
-      "sex": "M"
-    },
-    {
       "id": "EZ03",
       "hets": [
         "Piedsided"
