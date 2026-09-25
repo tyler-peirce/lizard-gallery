@@ -2,19 +2,10 @@
   "config": {
     "watermark": "TylerPeirce",
     "formspreeId": "xykobwad",
-    "deal": "If you are buying 4 lizards I will include the rack they are in to keep them for an extra $100. These are made from big bells tubs that are almost 1m x 60cm in floor space with air vents added and a water bowl holder I designed that is fixed to the side to prevent the lizards filling it with bedding and knocking it over (although sometimes they still manage to do that). Heated with a 75w heat cable (thermostat not included). You can't get these tubs in WA and the racks cost me significantly more to build, so it is a very good deal!"
+    "deal": "If you are buying 4 lizards I will include the rack they are in to keep them for an extra $200. These are made from big bells tubs that are almost 1m x 60cm in floor space with air vents added and a water bowl holder I designed that is fixed to the side to prevent the lizards filling it with bedding and knocking it over (although sometimes they still manage to do that). Heated with a 75w heat cable (thermostat not included). You can't get these tubs in WA and the racks cost me significantly more to build, so it is a very good deal!"
   },
   "breeding_groups": {},
   "animals": [
-    {
-      "id": "BZ05ZW1",
-      "morphs": [
-        "Whitesided"
-      ],
-      "price": 2000,
-      "dob": "2025-12-19",
-      "notes": "Whitesided, 50% het Anery, 66% het T+, pos het White Northern, pos het Hyper"
-    },
     {
       "id": "EZ03",
       "hets": [
@@ -33,7 +24,7 @@
       "hets": [
         "Piedsided"
       ],
-      "price": 2000,
+      "price": 1200,
       "dob": "2024-12-23",
       "notes": "T+, 50% het Anery, 50% het White Northern, pos het Hyper",
       "sex": "M"
@@ -43,7 +34,7 @@
       "hets": [
         "Piedsided"
       ],
-      "price": 400,
+      "price": 300,
       "dob": "2024-12-23",
       "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper",
       "sex": "M"
@@ -53,7 +44,7 @@
       "hets": [
         "Piedsided"
       ],
-      "price": 400,
+      "price": 300,
       "dob": "2024-12-23",
       "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper",
       "sex": "M"
@@ -63,7 +54,7 @@
       "hets": [
         "Piedsided"
       ],
-      "price": 400,
+      "price": 300,
       "dob": "2024-12-23",
       "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper",
       "sex": "M"
@@ -73,7 +64,7 @@
       "hets": [
         "Piedsided"
       ],
-      "price": 400,
+      "price": 300,
       "dob": "2024-12-23",
       "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper",
       "sex": "M"
@@ -83,7 +74,7 @@
       "hets": [
         "Piedsided"
       ],
-      "price": 400,
+      "price": 300,
       "dob": "2024-12-22",
       "notes": "50% het Albino, 50% het Anery, 50% het T+",
       "sex": "F"
@@ -94,7 +85,7 @@
         "Anery",
         "Piedsided"
       ],
-      "price": 500,
+      "price": 300,
       "dob": "2024-12-09",
       "notes": "50% het T+, 50% het White Northern, 50% het Hyper",
       "sex": "M"
@@ -105,7 +96,7 @@
         "Anery",
         "Piedsided"
       ],
-      "price": 500,
+      "price": 300,
       "dob": "2024-12-09",
       "notes": "50% het T+, 50% het White Northern, 50% het Hyper",
       "sex": "M"
@@ -116,7 +107,7 @@
         "Anery",
         "Piedsided"
       ],
-      "price": 500,
+      "price": 300,
       "dob": "2024-12-09",
       "notes": "50% het T+, 50% het White Northern, 50% het Hyper",
       "sex": "M"
@@ -127,7 +118,7 @@
         "Anery",
         "Piedsided"
       ],
-      "price": 500,
+      "price": 350,
       "dob": "2024-12-09",
       "notes": "50% het T+, 50% het White Northern, 50% het Hyper",
       "sex": "F"
@@ -138,7 +129,7 @@
         "Anery",
         "Whitesided"
       ],
-      "price": 500,
+      "price": 350,
       "dob": "2024-12-09",
       "notes": "50% het T+, 50% het White Northern, 50% het Hyper",
       "sex": "F"
@@ -149,7 +140,7 @@
         "Anery",
         "Piedsided"
       ],
-      "price": 500,
+      "price": 300,
       "dob": "2024-12-09",
       "notes": "50% het T+, 50% het White Northern, 50% het Hyper",
       "sex": "M"
@@ -161,7 +152,7 @@
         "T+",
         "White Northern"
       ],
-      "price": 500,
+      "price": 300,
       "dob": "2022",
       "notes": "66% het Hyper",
       "sex": "F"
@@ -182,17 +173,45 @@
       "hets": [
         "T+"
       ],
-      "price": 2500,
+      "price": 1800,
       "dob": "2022",
       "notes": "Piedsided",
       "description": "Visual piedsided male (from Joe Ball, this guy features in his book), he is a gun and will easily mate 6 females in a season. You could produce visual Patchwork/Piedsided/Whitesided in combination with T+. All babies will be het for Piedsided (Patchwork/Whitesided).",
       "sex": "M"
     },
     {
-      "id": "White",
-      "price": 300,
-      "dob": "2022",
-      "sex": "F"
+      "id": "AlbZ10",
+      "hets": [
+        "Albino",
+        "Piedsided"
+      ],
+      "price": 400,
+      "dob": "2026-02-07"
+    },
+    {
+      "id": "AlbZ5",
+      "hets": [
+        "Albino",
+        "Piedsided"
+      ],
+      "price": 400,
+      "dob": "2026-02-07"
+    },
+    {
+      "id": "BZ03Z5",
+      "morphs": [
+        "Patchwork"
+      ],
+      "price": 1200,
+      "notes": "Patchwork, 50% het Anery, 50% het T+, pos het White Northern, pos het Hyper"
+    },
+    {
+      "id": "BZ12BZ042",
+      "morphs": [
+        "T+"
+      ],
+      "price": 800,
+      "notes": "T+, 66% het Anery, pos het White Northern, pos het Hyper, 66% het Piedsided"
     }
   ]
 }
