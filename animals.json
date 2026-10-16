@@ -30,16 +30,6 @@
       "sex": "M"
     },
     {
-      "id": "CZ03",
-      "hets": [
-        "Piedsided"
-      ],
-      "price": 300,
-      "dob": "2024-12-23",
-      "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper",
-      "sex": "M"
-    },
-    {
       "id": "CZ1024",
       "hets": [
         "Piedsided"
@@ -48,36 +38,6 @@
       "dob": "2024-12-23",
       "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper",
       "sex": "M"
-    },
-    {
-      "id": "CZ1124",
-      "hets": [
-        "Piedsided"
-      ],
-      "price": 300,
-      "dob": "2024-12-23",
-      "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper",
-      "sex": "M"
-    },
-    {
-      "id": "CZ13",
-      "hets": [
-        "Piedsided"
-      ],
-      "price": 300,
-      "dob": "2024-12-23",
-      "notes": "50% het Anery, 66% het T+, 50% het White Northern, pos het Hyper",
-      "sex": "M"
-    },
-    {
-      "id": "DZ13",
-      "hets": [
-        "Piedsided"
-      ],
-      "price": 300,
-      "dob": "2024-12-22",
-      "notes": "50% het Albino, 50% het Anery, 50% het T+",
-      "sex": "F"
     },
     {
       "id": "BZ06",
@@ -91,39 +51,6 @@
       "sex": "M"
     },
     {
-      "id": "BZ07",
-      "hets": [
-        "Anery",
-        "Piedsided"
-      ],
-      "price": 300,
-      "dob": "2024-12-09",
-      "notes": "50% het T+, 50% het White Northern, 50% het Hyper",
-      "sex": "M"
-    },
-    {
-      "id": "BZ13",
-      "hets": [
-        "Anery",
-        "Piedsided"
-      ],
-      "price": 300,
-      "dob": "2024-12-09",
-      "notes": "50% het T+, 50% het White Northern, 50% het Hyper",
-      "sex": "M"
-    },
-    {
-      "id": "BZ01",
-      "hets": [
-        "Anery",
-        "Piedsided"
-      ],
-      "price": 350,
-      "dob": "2024-12-09",
-      "notes": "50% het T+, 50% het White Northern, 50% het Hyper",
-      "sex": "F"
-    },
-    {
       "id": "BZ11",
       "hets": [
         "Anery",
@@ -133,17 +60,6 @@
       "dob": "2024-12-09",
       "notes": "50% het T+, 50% het White Northern, 50% het Hyper",
       "sex": "F"
-    },
-    {
-      "id": "BZ14",
-      "hets": [
-        "Anery",
-        "Piedsided"
-      ],
-      "price": 300,
-      "dob": "2024-12-09",
-      "notes": "50% het T+, 50% het White Northern, 50% het Hyper",
-      "sex": "M"
     },
     {
       "id": "C",
@@ -212,6 +128,35 @@
       ],
       "price": 800,
       "notes": "T+, 66% het Anery, pos het White Northern, pos het Hyper, 66% het Piedsided"
+    },
+    {
+      "id": "BZ05Z3",
+      "morphs": [
+        "T+",
+        "Piedsided"
+      ],
+      "price": 1800,
+      "notes": "T+, Piedsided, 50% het Anery, pos het White Northern, pos het Hyper"
+    },
+    {
+      "id": "GZ10",
+      "hets": [
+        "Piedsided"
+      ],
+      "price": 400,
+      "dob": "2026-01-25",
+      "notes": "50% het T+",
+      "description": "This one was going to be a keeper. From a litter of 18! The babies also came out huge and very healthy."
+    },
+    {
+      "id": "GZ3",
+      "hets": [
+        "Piedsided"
+      ],
+      "price": 400,
+      "dob": "2026-01-25",
+      "notes": "50% het T+",
+      "description": "This one was going to be a keeper. From a litter of 18! The babies also came out huge and very healthy."
     }
   ]
 }
